@@ -28,9 +28,9 @@ const zephyr = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dia | The browser for your best work",
+  title: "Homi",
   description:
-    "Dia is the browser for your best work. Get answers without having to ask, produce beautiful ready-to-share outputs, and stay focused in the best browser for your work day.",
+    "",
   keywords: [
     "AI browser",
     "productivity",
