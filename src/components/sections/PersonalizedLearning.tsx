@@ -17,15 +17,17 @@ export default function PersonalizedLearning() {
   // Monitor scroll progression to highlight the active node
   useEffect(() => {
     return scrollYProgress.onChange((latest) => {
+      let nextIndex = 0;
       if (latest < 0.25) {
-        setActiveIndex(0);
+        nextIndex = 0;
       } else if (latest < 0.5) {
-        setActiveIndex(1);
+        nextIndex = 1;
       } else if (latest < 0.75) {
-        setActiveIndex(2);
+        nextIndex = 2;
       } else {
-        setActiveIndex(3);
+        nextIndex = 3;
       }
+      setActiveIndex((prev) => (prev !== nextIndex ? nextIndex : prev));
     });
   }, [scrollYProgress]);
 
@@ -40,7 +42,7 @@ export default function PersonalizedLearning() {
       title: "Learns How You Learn",
       description: "During the first few sessions, Homi understands how the student learns best and adapts explanations accordingly.",
       visual: (
-        <div className="flex flex-col gap-8 bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[340px]">
+        <div className="flex flex-col gap-8 bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[260px] 600:max-w-[340px]">
           <div className="flex items-center gap-8 bg-orange-500/5 border border-orange-500/15 p-8 rounded-10">
             <span className="text-14">📖</span>
             <span className="text-12 font-bold text-orange-950">Simple Explanation</span>
@@ -61,7 +63,7 @@ export default function PersonalizedLearning() {
       title: "Finds Weak Areas Early",
       description: "Homi identifies concepts that need more attention before they become larger academic struggles.",
       visual: (
-        <div className="flex flex-col gap-8 bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[340px]">
+        <div className="flex flex-col gap-8 bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[260px] 600:max-w-[340px]">
           <div className="flex justify-between items-center bg-green-500/5 border border-green-500/15 p-8 rounded-10">
             <span className="text-12 font-medium text-green-950">✓ Fractions Concept</span>
             <span className="text-10 text-green-700 bg-green-500/10 px-6 py-1 rounded">Mastered</span>
@@ -82,7 +84,7 @@ export default function PersonalizedLearning() {
       title: "Personalizes Practice",
       description: "Practice questions automatically adjust to the student's current understanding and confidence level.",
       visual: (
-        <div className="bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[340px] flex flex-col gap-10">
+        <div className="bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[260px] 600:max-w-[340px] flex flex-col gap-10">
           <div className="flex items-center justify-between gap-10 relative py-8 px-4">
             {/* Connector Dotted Line */}
             <div className="absolute left-6 right-6 top-[15px] h-[2px] bg-black/5 -z-10 rounded-full" />
@@ -116,7 +118,7 @@ export default function PersonalizedLearning() {
       title: "Tracks Growth Over Time",
       description: "Every study session contributes to a clearer understanding of progress, strengths, and improvement areas.",
       visual: (
-        <div className="flex flex-col gap-8 bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[340px]">
+        <div className="flex flex-col gap-8 bg-white border border-black/5 p-16 rounded-16 shadow-sm mt-10 w-full max-w-[260px] 600:max-w-[340px]">
           <div className="flex justify-between items-center border-b border-black/5 pb-4">
             <span className="text-[10px] font-mono text-black/35 uppercase">Live Metrics</span>
             <span className="text-8 bg-green-500/10 text-green-700 px-6 py-1 rounded font-semibold">Synced</span>

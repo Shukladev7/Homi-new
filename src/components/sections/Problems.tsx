@@ -21,15 +21,17 @@ export default function Problems() {
   // 0.75 -> 1.0 = Step 4
   useEffect(() => {
     return scrollYProgress.onChange((latest) => {
+      let nextIndex = 0;
       if (latest < 0.25) {
-        setActiveIndex(0);
+        nextIndex = 0;
       } else if (latest < 0.5) {
-        setActiveIndex(1);
+        nextIndex = 1;
       } else if (latest < 0.75) {
-        setActiveIndex(2);
+        nextIndex = 2;
       } else {
-        setActiveIndex(3);
+        nextIndex = 3;
       }
+      setActiveIndex((prev) => (prev !== nextIndex ? nextIndex : prev));
     });
   }, [scrollYProgress]);
 

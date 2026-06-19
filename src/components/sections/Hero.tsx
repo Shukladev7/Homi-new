@@ -11,14 +11,14 @@ export default function Hero() {
   return (
     <section 
       id="hero"
-      className="h-full-screen relative overflow-hidden bg-white isolate [contain:layout_paint]"
+      className="min-h-[100svh] 800:h-full-screen relative overflow-hidden bg-white isolate [contain:layout_paint]"
       style={{ "--hero-color": "#4A90E2" } as React.CSSProperties}
     >
       
       {/* ========================================================
           BACKGROUND LAYERED PASTEL LIGHT SOURCES - STRONGER COLOR (Z-Index 1 to 5)
          ======================================================== */}
-      <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none z-1">
+      <div aria-hidden="true" className="hidden 800:block absolute inset-0 overflow-hidden pointer-events-none z-1">
         
         {/* Blob 1: Vibrant Pastel Blue / Cyan (Top Left) - Saturated & Strong */}
         <motion.div 
@@ -112,6 +112,15 @@ export default function Hero() {
 
       </div>
 
+      {/* Mobile static high-performance background (visible on mobile, hidden on desktop) */}
+      <div 
+        aria-hidden="true" 
+        className="block 800:hidden absolute inset-0 bg-[#F8FAFC] pointer-events-none -z-10"
+        style={{
+          backgroundImage: "radial-gradient(circle at 50% 30%, rgba(54, 175, 255, 0.15) 0%, rgba(255, 100, 195, 0.1) 40%, rgba(255, 255, 255, 0) 70%)"
+        }}
+      />
+
       {/* ========================================================
           WHITE HORIZON ARC WITH VIBRANT LIGHT REFLECTIONS (Z-Index 10)
          ======================================================== */}
@@ -172,7 +181,7 @@ export default function Hero() {
       {/* ========================================================
           HERO CONTENT AND HEADLINE GLOWS (Z-Index 20)
          ======================================================== */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-black leading-[1.05] -tracking-4 px-16 pt-[22vh] 800:pt-[15vh] section-header">
+      <div className="relative 800:absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-black leading-[1.05] -tracking-4 px-16 pt-[120px] pb-[80px] 800:pt-[15vh] 800:pb-0 section-header min-h-[100svh] 800:min-h-0">
         
         {/* Headline Entrance */}
         <motion.div 
