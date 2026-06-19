@@ -1,0 +1,280 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: rgba(0, 0, 0, 0.85);
+  --color-secondary: rgba(0, 0, 0, 0.60);
+  --color-tertiary: rgba(0, 0, 0, 0.45);
+  --color-quaternary: rgba(0, 0, 0, 0.20);
+  --color-fill-primary: rgba(0, 0, 0, 0.9);
+  --color-fill-secondary: rgba(0, 0, 0, 0.08);
+  --color-fill-secondary-hover: rgba(0, 0, 0, 0.12);
+  --color-fill-tertiary: rgba(0, 0, 0, 0.04);
+  --color-stroke-light: rgba(0, 0, 0, 0.06);
+  --color-stroke-medium: rgba(0, 0, 0, 0.12);
+  --color-light-grey: #f0f0f0;
+  --color-background: #F8F8F8;
+  --color-true-white: #ffffff;
+  --color-header-background: rgba(221, 221, 221, 0.47);
+
+  --font-serif: var(--font-lora), serif;
+  --font-sans: var(--font-zephyr), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+  --font-variable: var(--font-lora), serif;
+  --font-triple: var(--font-zephyr), sans-serif;
+
+  --font-weight-300: 300;
+  --font-weight-350: 350;
+  --font-weight-650: 650;
+
+  --breakpoint-600: 600px;
+  --breakpoint-800: 800px;
+  --breakpoint-1000: 1000px;
+  --breakpoint-1200: 1200px;
+
+  /* Custom rem-based Spacing scale to allow fluid global scaling via HTML root */
+  --spacing-0: 0rem;
+  --spacing-1: 0.058rem;
+  --spacing-2: 0.116rem;
+  --spacing-3: 0.174rem;
+  --spacing-4: 0.232rem;
+  --spacing-5: 0.29rem;
+  --spacing-6: 0.348rem;
+  --spacing-7: 0.406rem;
+  --spacing-8: 0.464rem;
+  --spacing-9: 0.522rem;
+  --spacing-10: 0.58rem;
+  --spacing-11: 0.638rem;
+  --spacing-12: 0.696rem;
+  --spacing-13: 0.754rem;
+  --spacing-14: 0.812rem;
+  --spacing-15: 0.87rem;
+  --spacing-16: 0.928rem;
+  --spacing-17: 0.986rem;
+  --spacing-18: 1.044rem;
+  --spacing-20: 1.16rem;
+  --spacing-22: 1.276rem;
+  --spacing-24: 1.392rem;
+  --spacing-26: 1.508rem;
+  --spacing-28: 1.624rem;
+  --spacing-30: 1.74rem;
+  --spacing-32: 1.856rem;
+  --spacing-33: 1.914rem;
+  --spacing-34: 1.972rem;
+  --spacing-35: 2.03rem;
+  --spacing-36: 2.088rem;
+  --spacing-37: 2.146rem;
+  --spacing-40: 2.32rem;
+  --spacing-44: 2.552rem;
+  --spacing-45: 2.61rem;
+  --spacing-46: 2.668rem;
+  --spacing-48: 2.784rem;
+  --spacing-50: 2.9rem;
+  --spacing-52: 3.016rem;
+  --spacing-54: 3.132rem;
+  --spacing-56: 3.248rem;
+  --spacing-60: 3.48rem;
+  --spacing-70: 4.06rem;
+  --spacing-74: 4.292rem;
+  --spacing-76: 4.408rem;
+  --spacing-78: 4.524rem;
+  --spacing-80: 4.64rem;
+  --spacing-88: 5.104rem;
+  --spacing-90: 5.22rem;
+  --spacing-96: 5.568rem;
+  --spacing-100: 5.8rem;
+  --spacing-120: 7.5rem;
+  --spacing-150: 8.7rem;
+  --spacing-170: 9.86rem;
+  --spacing-180: 10.44rem;
+  --spacing-210: 12.18rem;
+  --spacing-230: 13.34rem;
+  --spacing-240: 13.92rem;
+  --spacing-280: 20rem;
+  --spacing-300: 17.4rem;
+  --spacing-320: 22.5rem;
+  --spacing-336: 19.488rem;
+  --spacing-340: 25rem;
+  --spacing-360: 20.88rem;
+  --spacing-380: 22.04rem;
+  --spacing-400: 23.2rem;
+  --spacing-420: 24.36rem;
+  --spacing-450: 40rem;
+  --spacing-460: 31.25rem;
+  --spacing-480: 27.84rem;
+  --spacing-500: 29rem;
+  --spacing-760: 60rem;
+  --spacing-930: 70rem;
+  --spacing-1096: 75rem;
+  --spacing-1141: 78.75rem;
+  --spacing-1200: 81.25rem;
+  --spacing-1400: 95rem;
+  --spacing-1440: 100rem;
+
+  /* Rem-based Border Radiuses */
+  --radius-4: 0.232rem;
+  --radius-5: 0.29rem;
+  --radius-6: 0.348rem;
+  --radius-8: 0.464rem;
+  --radius-12: 0.696rem;
+  --radius-14: 0.812rem;
+  --radius-16: 0.928rem;
+  --radius-20: 1.16rem;
+  --radius-24: 1.392rem;
+  --radius-30: 1.74rem;
+}
+
+html {
+  font-size: 100%; /* 0.58rem = 7.6px (Scaled down globally by 24% for maximum elegance) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F8F8F8;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
+
+.h2--exposure {
+  font-family: var(--font-serif);
+  font-size: 1.856rem;
+  font-weight: 650;
+  line-height: 2.204rem;
+  letter-spacing: -0.05em;
+}
+
+@media (min-width: 800px) {
+  .h2--exposure {
+    font-size: 2.32rem;
+    line-height: 2.784rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h2--exposure {
+    font-size: 2.784rem;
+    line-height: 3.248rem;
+  }
+}
+
+.chroma-text {
+  background-image: linear-gradient(
+    90deg,
+    #000000 0%,
+    #000000 33.33%,
+    #c679c4 40%,
+    #fa3d1d 45%,
+    #ffb005 50%,
+    #e1e1fe 55%,
+    #0358f7 60%,
+    transparent 66.67%,
+    transparent
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  will-change: background-position;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  color: transparent;
+  transition: background-position 0.8s ease;
+}
+
+.chroma-text:hover {
+  background-position: 0% 0;
+}
+
+.button--cta {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button--cta:hover {
+  background-color: #424242;
+}
+
+.svg-dashed-border-pattern {
+  position: relative;
+}
+
+.dashed-border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+/* Custom classes for exact visual cloning matching layout sizes */
+.h-full-screen {
+  height: 100svh;
+}
+
+/* Typography classes mapped directly to rem units */
+.text-8 { font-size: 0.464rem; }
+.text-9 { font-size: 0.522rem; }
+.text-10 { font-size: 0.58rem; }
+.text-11 { font-size: 0.638rem; }
+.text-12 { font-size: 0.696rem; }
+.text-14 { font-size: 0.812rem; }
+.text-16 { font-size: 0.928rem; }
+.text-17 { font-size: 0.986rem; }
+.text-18 { font-size: 1.044rem; }
+.text-20 { font-size: 1.16rem; }
+.text-22 { font-size: 1.276rem; }
+.text-24 { font-size: 1.392rem; }
+.text-28 { font-size: 1.624rem; }
+.text-30 { font-size: 1.74rem; }
+.text-35 { font-size: 2.03rem; }
+.text-48 { font-size: 2.784rem; }
+.text-54 { font-size: 3.132rem; }
+.text-64 { font-size: 3.712rem; }
+.text-80 { font-size: 4.64rem; }
+.text-96 { font-size: 5.568rem; }
+.text-110 { font-size: 6.38rem; }
+.text-120 { font-size: 6.96rem; }
+.text-130 { font-size: 7.54rem; }
+.text-140 { font-size: 8.12rem; }
+
+/* Custom padding and layout spacing */
+.rounded-4 { border-radius: 0.232rem; }
+.rounded-5 { border-radius: 0.29rem; }
+.rounded-12 { border-radius: 0.696rem; }
+.rounded-14 { border-radius: 0.812rem; }
+.rounded-16 { border-radius: 0.928rem; }
+.rounded-20 { border-radius: 1.16rem; }
+.rounded-24 { border-radius: 1.392rem; }
+.rounded-30 { border-radius: 1.74rem; }
+
+.shadow-marquee-slide-title {
+  box-shadow: 0px 0.232rem 1.856rem 0px rgba(0, 0, 0, 0.06);
+}
+
+.site-ease {
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.site-grid {
+  display: grid;
+  grid-template-cols: repeat(12, minmax(0, 1fr));
+  gap: 1.16rem;
+  padding-left: 1.16rem;
+  padding-right: 1.16rem;
+}
+
+@media (min-width: 800px) {
+  .site-grid {
+    padding-left: 2.32rem;
+    padding-right: 2.32rem;
+  }
+}
+
+/* Enforce Lora & Plus Jakarta Sans in all section header regions */
+.section-header {
+  --font-serif: var(--font-lora), serif;
+  --font-sans: var(--font-plus-jakarta), sans-serif;
+}
+

@@ -1,0 +1,358 @@
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+
+export default function Hero() {
+  const { scrollY } = useScroll();
+  const yCard1 = useTransform(scrollY, [0, 600], [0, -50]);
+  const yCard2 = useTransform(scrollY, [0, 600], [0, -80]);
+  const yCard3 = useTransform(scrollY, [0, 600], [0, 50]);
+
+  return (
+    <section 
+      id="hero"
+      className="h-full-screen relative overflow-hidden bg-white isolate [contain:layout_paint]"
+      style={{ "--hero-color": "#4A90E2" } as React.CSSProperties}
+    >
+      
+      {/* ========================================================
+          BACKGROUND LAYERED PASTEL LIGHT SOURCES - STRONGER COLOR (Z-Index 1 to 5)
+         ======================================================== */}
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none z-1">
+        
+        {/* Blob 1: Vibrant Pastel Blue / Cyan (Top Left) - Saturated & Strong */}
+        <motion.div 
+          animate={{ 
+            x: ["-8%", "8%", "-4%", "-8%"],
+            y: ["-4%", "4%", "0%", "-4%"],
+            scale: [1, 1.15, 0.95, 1]
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute left-[-10%] top-[-10%] rounded-full blur-[180px] 800:blur-[280px] opacity-95 mix-blend-screen"
+          style={{
+            width: "95vw",
+            height: "95vw",
+            backgroundImage: "radial-gradient(circle, rgba(54, 175, 255, 0.85) 0%, rgba(121, 243, 255, 0.45) 50%, transparent 75%)",
+          }}
+        />
+
+        {/* Blob 2: Dreamy Pastel Pink / Magenta (Top Right) - Saturated & Strong */}
+        <motion.div 
+          animate={{ 
+            x: ["8%", "-8%", "4%", "8%"],
+            y: ["4%", "-4%", "0%", "4%"],
+            scale: [1, 0.9, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 24, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute right-[-10%] top-[-10%] rounded-full blur-[180px] 800:blur-[280px] opacity-90 mix-blend-screen"
+          style={{
+            width: "95vw",
+            height: "95vw",
+            backgroundImage: "radial-gradient(circle, rgba(255, 100, 195, 0.8) 0%, rgba(255, 180, 210, 0.45) 50%, transparent 75%)",
+          }}
+        />
+
+        {/* Blob 3: Magical Lavender / Purple (Center Top) - Saturated & Strong */}
+        <motion.div 
+          animate={{ 
+            x: ["-4%", "4%", "-4%"],
+            y: ["-8%", "8%", "-8%"],
+            scale: [0.95, 1.08, 0.95]
+          }}
+          transition={{ 
+            duration: 22, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute left-[10%] top-[-25%] rounded-full blur-[200px] 800:blur-[300px] opacity-90 mix-blend-screen"
+          style={{
+            width: "105vw",
+            height: "85vw",
+            backgroundImage: "radial-gradient(circle, rgba(186, 110, 255, 0.75) 0%, rgba(220, 180, 255, 0.4) 50%, transparent 75%)",
+          }}
+        />
+
+        {/* Blob 4: Soft Pastel Peach (Middle Left) - Saturated & Strong */}
+        <motion.div 
+          animate={{ 
+            x: ["-10%", "8%", "-10%"],
+            y: ["8%", "-8%", "8%"],
+            scale: [1.1, 0.9, 1.1]
+          }}
+          transition={{ 
+            duration: 26, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute left-[-20%] top-[20%] rounded-full blur-[170px] 800:blur-[250px] opacity-85 mix-blend-screen"
+          style={{
+            width: "85vw",
+            height: "85vw",
+            backgroundImage: "radial-gradient(circle, rgba(255, 175, 110, 0.7) 0%, rgba(255, 230, 150, 0.35) 60%, transparent 75%)",
+          }}
+        />
+
+        {/* Blob 5: Center Core Atmospheric Light */}
+        <div 
+          className="absolute left-1/2 -translate-x-1/2 top-[5%] rounded-full blur-[140px] opacity-80 pointer-events-none"
+          style={{
+            width: "75vw",
+            height: "50vw",
+            backgroundImage: "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, transparent 70%)",
+          }}
+        />
+
+      </div>
+
+      {/* ========================================================
+          WHITE HORIZON ARC WITH VIBRANT LIGHT REFLECTIONS (Z-Index 10)
+         ======================================================== */}
+      <div aria-hidden="true" className="absolute left-0 right-0 bottom-0 z-10" style={{ top: "22svh" }}>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.97, y: 15 }}
+          animate={{ 
+            opacity: 1, 
+            scale: [1, 1.012, 1],
+            y: [0, -3, 0]
+          }}
+          transition={{ 
+            opacity: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
+            scale: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 10, repeat: Infinity, ease: "easeInOut" }
+          }}
+          className="will-change-transform relative w-full h-full"
+          style={{ transformOrigin: "center" }}
+        >
+          {/* Light scattering left side blue glow reflection */}
+          <div 
+            className="absolute left-[10%] w-[65vw] h-[35vw] rounded-full blur-[45px] opacity-85 pointer-events-none -z-10"
+            style={{
+              backgroundImage: "radial-gradient(circle, rgba(54, 175, 255, 0.6) 0%, transparent 70%)",
+              top: "-20px"
+            }}
+          />
+
+          {/* Light scattering right side pink glow reflection */}
+          <div 
+            className="absolute right-[10%] w-[65vw] h-[35vw] rounded-full blur-[45px] opacity-80 pointer-events-none -z-10"
+            style={{
+              backgroundImage: "radial-gradient(circle, rgba(255, 100, 195, 0.55) 0%, transparent 70%)",
+              top: "-20px"
+            }}
+          />
+
+          {/* Light scattering bottom peach reflection glow */}
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 w-[80vw] h-[40vw] rounded-full blur-[50px] opacity-65 pointer-events-none -z-10"
+            style={{
+              backgroundImage: "radial-gradient(circle, rgba(255, 175, 110, 0.5) 0%, transparent 70%)",
+              top: "-20px"
+            }}
+          />
+
+          {/* White Horizon Arc itself */}
+          <div 
+            className="aspect-square relative left-1/2 -translate-x-1/2 bg-white rounded-full [clip-path:inset(0_0_33.33%_0)]" 
+            style={{ 
+              width: "220vw",
+              boxShadow: "inset 0px 4px 20px rgba(54, 175, 255, 0.18), 0px -4px 30px rgba(255, 100, 195, 0.18)"
+            }} 
+          />
+        </motion.div>
+      </div>
+
+      {/* ========================================================
+          HERO CONTENT AND HEADLINE GLOWS (Z-Index 20)
+         ======================================================== */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-black leading-[1.05] -tracking-4 px-16 pt-[22vh] 800:pt-[15vh] section-header">
+        
+        {/* Headline Entrance */}
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center text-64 600:text-96 800:text-110 1000:text-140 pointer-events-none select-none"
+        >
+          <h1 className="font-sans font-300 -tracking-4 text-black flex flex-col items-center gap-10">
+            <span className="block">Learning that</span>
+            <span className="block">knows</span>
+            
+            {/* Centerpiece "you" word with soft pulsing Apple bloom */}
+            <span className="relative inline-block font-serif font-650 italic text-[1.15em] leading-[0.9] -tracking-3 text-black px-10">
+              <motion.span
+                animate={{ 
+                  opacity: [0.35, 0.6, 0.35],
+                  scale: [1, 1.08, 1]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute -inset-x-20 -inset-y-10 bg-gradient-to-r from-[#54AFFF]/65 via-[#FF64C3]/55 to-[#FFAF6E]/60 blur-[24px] rounded-full pointer-events-none -z-10"
+              />
+              you
+            </span>
+          </h1>
+        </motion.div>
+
+        {/* Subtitle, Board Badges & Download Button */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center gap-24 mt-30 800:mt-40"
+        >
+          <p className="font-sans font-350 tracking-tight text-16 600:text-18 800:text-20 text-black/65 max-w-280 800:max-w-450 leading-[1.5] text-pretty">
+            Meet Homi — your AI learning companion for Classes VI–XII. Personalized explanations, instant doubt solving, viva preparation, and parent insights in one platform.
+          </p>
+
+          {/* Board Strip Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-10 px-24">
+            <span className="h-28 rounded-14 px-12 leading-28 bg-[#EBEBEB]/70 border border-black/5 font-sans font-500 text-12 text-secondary flex items-center gap-6 shadow-sm select-none whitespace-nowrap">
+              <span className="text-[#36AFFF]">✓</span> NCERT Aligned
+            </span>
+            <span className="h-28 rounded-14 px-12 leading-28 bg-[#EBEBEB]/70 border border-black/5 font-sans font-500 text-12 text-secondary flex items-center gap-6 shadow-sm select-none whitespace-nowrap">
+              <span className="text-[#36AFFF]">✓</span> Gujarat Board
+            </span>
+            <span className="h-28 rounded-14 px-12 leading-28 bg-[#EBEBEB]/70 border border-black/5 font-sans font-500 text-12 text-secondary flex items-center gap-6 shadow-sm select-none whitespace-nowrap">
+              <span className="text-[#36AFFF]">✓</span> ICSE Curriculum
+            </span>
+          </div>
+          
+          <div className="flex flex-col 600:flex-row items-center gap-16 pointer-events-auto mt-10">
+            {/* Primary CTA */}
+            <button 
+              className="inline-flex rounded-14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue group relative" 
+              title="Start Free With Homi" 
+              type="button"
+            >
+              <span className="relative inline-flex items-center justify-center">
+                {/* Glow Behind Button */}
+                <span 
+                  aria-hidden="true" 
+                  className="absolute -inset-x-32 -inset-y-16 rounded-full blur-[32px] opacity-40 pointer-events-none transition-all duration-300 group-hover:opacity-60" 
+                  style={{ backgroundColor: "rgba(121, 201, 255, 0.8)" }}
+                />
+                <span 
+                  className="relative flex items-center justify-center rounded-14 text-true-white font-sans font-500 text-16 800:text-18 h-52 px-32 transition-all duration-300 bg-[#0A0A0A] hover:bg-[#1A1A1A]"
+                  style={{ 
+                    boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.15)"
+                  }}
+                >
+                  Start Free With Homi
+                </span>
+              </span>
+            </button>
+
+            {/* Secondary CTA */}
+            <button 
+              className="inline-flex items-center justify-center rounded-14 text-black bg-[#EBEBEB]/70 border border-black/5 hover:bg-black/10 px-32 text-16 800:text-18 h-52 transition-all duration-200 ease-in-out font-sans font-500 gap-10"
+              title="See Homi In Action" 
+              type="button"
+            >
+              <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-black/70">
+                <path d="M1.24658 12.4229C0.978027 12.4229 0.763184 12.3252 0.602051 12.1299C0.445801 11.9395 0.367676 11.6855 0.367676 11.3682V1.07031C0.367676 0.75293 0.445801 0.499023 0.602051 0.308594C0.763184 0.118164 0.978027 0.0229492 1.24658 0.0229492C1.39307 0.0229492 1.53223 0.0498047 1.66406 0.103516C1.7959 0.152344 1.93506 0.218262 2.08154 0.30127L10.6216 5.24512C10.9292 5.4209 11.1416 5.57959 11.2588 5.72119C11.3809 5.85791 11.4419 6.02393 11.4419 6.21924C11.4419 6.41455 11.3809 6.58301 11.2588 6.72461C11.1416 6.86133 10.9292 7.02002 10.6216 7.20068L2.08154 12.1372C1.93506 12.2251 1.7959 12.2935 1.66406 12.3423C1.53223 12.396 1.39307 12.4229 1.24658 12.4229Z" fill="currentColor"></path>
+              </svg>
+              See Homi In Action
+            </button>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ========================================================
+          HOMILEARN FLOATING EDUCATIONAL CARDS (Z-Index 30)
+         ======================================================== */}
+      
+      {/* CARD 1 (Top Left) - Doubt Solved */}
+      <motion.div style={{ y: yCard1 }} className="hidden 1000:block absolute left-[8%] top-[16%] z-30">
+        <motion.div 
+          animate={{ y: [0, -8, 0], rotate: [0, 0.5, -0.5, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="w-180 bg-white/70 backdrop-blur-md border border-black/8 rounded-16 p-12 shadow-[0px_8px_32px_rgba(0,0,0,0.04)] text-left flex flex-col gap-8 font-sans"
+        >
+          <div className="flex items-center justify-between border-b border-black/5 pb-6">
+            <span className="text-[9px] uppercase font-mono tracking-wider text-green-600 font-semibold flex items-center gap-4">
+              <span className="w-5 h-5 rounded-full bg-green-500" />
+              Doubt Solved
+            </span>
+            <span className="text-11">💬</span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <span className="text-[9px] text-black/40">STUDENT</span>
+            <span className="text-12 font-semibold text-black/85 leading-tight">"Explain Photosynthesis"</span>
+          </div>
+          <div className="h-22 rounded-11 px-8 leading-22 bg-green-500/10 border border-green-500/15 text-green-700 font-semibold text-[10px] w-max select-none shadow-sm flex items-center gap-3 mt-1">
+            <span>✓</span> Understood
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* CARD 2 (Top Right) - Viva Practice */}
+      <motion.div style={{ y: yCard2 }} className="hidden 1000:block absolute right-[8%] top-[14%] z-30">
+        <motion.div 
+          animate={{ y: [0, -10, 0], rotate: [0, -0.5, 0.5, 0] }}
+          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          className="w-170 bg-white/70 backdrop-blur-md border border-black/8 rounded-16 p-12 shadow-[0px_8px_32px_rgba(0,0,0,0.04)] text-left flex flex-col gap-8 font-sans"
+        >
+          <div className="flex items-center justify-between border-b border-black/5 pb-6">
+            <span className="text-[9px] uppercase font-mono tracking-wider text-purple-600 font-semibold flex items-center gap-4">
+              <span className="w-5 h-5 rounded-full bg-purple-500" />
+              Viva Practice
+            </span>
+            <span className="text-11">🎤</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] text-black/45">Confidence Score</span>
+            <div className="flex items-baseline gap-4">
+              <span className="text-24 font-serif font-650 text-black leading-none">92%</span>
+              <span className="text-[9px] text-green-600 font-semibold">Excellent</span>
+            </div>
+          </div>
+          {/* Micro stats progress bar */}
+          <div className="h-4 bg-black/5 rounded-full overflow-hidden w-full mt-1">
+            <div className="h-full bg-gradient-to-r from-purple-500 to-[#FF64C3] rounded-full" style={{ width: "92%" }} />
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* CARD 3 (Bottom Left) - Progress This Week */}
+      <motion.div style={{ y: yCard3 }} className="hidden 1000:block absolute left-[7%] bottom-[16%] z-30">
+        <motion.div 
+          animate={{ y: [0, -7, 0], rotate: [0, -0.4, 0.4, 0] }}
+          transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+          className="w-180 bg-white/70 backdrop-blur-md border border-black/8 rounded-16 p-12 shadow-[0px_8px_32px_rgba(0,0,0,0.04)] text-left flex flex-col gap-8 font-sans"
+        >
+          <div className="flex items-center justify-between border-b border-black/5 pb-6">
+            <span className="text-[9px] uppercase font-mono tracking-wider text-blue-600 font-semibold flex items-center gap-4">
+              <span className="w-5 h-5 rounded-full bg-blue-500" />
+              Progress This Week
+            </span>
+            <span className="text-11">📊</span>
+          </div>
+          <div className="flex flex-col gap-6">
+            <div className="flex justify-between items-center text-12 font-semibold text-black/80">
+              <span>Maths</span>
+              <span className="text-green-600 text-10 font-bold flex items-center gap-1">▲ +12%</span>
+            </div>
+            <div className="flex justify-between items-center text-12 font-semibold text-black/80">
+              <span>Science</span>
+              <span className="text-green-600 text-10 font-bold flex items-center gap-1">▲ +8%</span>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+
+
+    </section>
+  );
+}
