@@ -10,24 +10,28 @@ export default function Header() {
     { title: "How It Works", targetId: "how-it-works" },
     { title: "Features", targetId: "features" },
     { title: "For Parents", targetId: "for-parents" },
-    { title: "Pricing", targetId: "cta" },
+    { title: "Pricing", targetId: "pricing" },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
     e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      // Offset slightly to account for fixed header spacing on mobile/desktop
-      const offset = 70;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
     setIsOpen(false);
+
+    // Defer scroll calculation and execution slightly to prevent transition interruptions
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        // Offset slightly to account for fixed header spacing on mobile/desktop
+        const offset = 70;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }, 150);
   };
 
   return (

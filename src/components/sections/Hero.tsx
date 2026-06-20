@@ -8,6 +8,19 @@ export default function Hero() {
   const yCard2 = useTransform(scrollY, [0, 600], [0, -80]);
   const yCard3 = useTransform(scrollY, [0, 600], [0, 50]);
 
+  const handleScroll = (targetId: string) => {
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offset = 70;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section 
       id="hero"
@@ -115,7 +128,7 @@ export default function Hero() {
       {/* Mobile static high-performance background (visible on mobile, hidden on desktop) */}
       <div 
         aria-hidden="true" 
-        className="block 800:hidden absolute inset-0 bg-[#F8FAFC] pointer-events-none -z-10"
+        className="block 800:hidden absolute inset-0 bg-white pointer-events-none -z-10"
         style={{
           backgroundImage: "radial-gradient(circle at 50% 30%, rgba(54, 175, 255, 0.15) 0%, rgba(255, 100, 195, 0.1) 40%, rgba(255, 255, 255, 0) 70%)"
         }}
@@ -181,14 +194,14 @@ export default function Hero() {
       {/* ========================================================
           HERO CONTENT AND HEADLINE GLOWS (Z-Index 20)
          ======================================================== */}
-      <div className="relative 800:absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-black leading-[1.05] -tracking-4 px-16 pt-[120px] pb-[80px] 800:pt-[15vh] 800:pb-0 section-header min-h-[100svh] 800:min-h-0">
+      <div className="relative 800:absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-black leading-[1.05] -tracking-4 px-16 pt-[240px] 600:pt-[280px] pb-[80px] 800:pt-[15vh] 800:pb-0 section-header min-h-[100svh] 800:min-h-0">
         
         {/* Headline Entrance */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-64 600:text-96 800:text-110 1000:text-140 pointer-events-none select-none"
+          className="flex flex-col items-center text-48 600:text-80 800:text-110 1000:text-140 pointer-events-none select-none"
         >
           <h1 className="font-sans font-300 -tracking-4 text-black flex flex-col items-center gap-10">
             <span className="block">Learning that</span>
@@ -240,7 +253,8 @@ export default function Hero() {
           <div className="flex flex-col 600:flex-row items-center gap-16 pointer-events-auto mt-10">
             {/* Primary CTA */}
             <button 
-              className="inline-flex rounded-14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue group relative" 
+              onClick={() => handleScroll("cta")}
+              className="inline-flex rounded-14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue group relative cursor-pointer" 
               title="Start Free With Homi" 
               type="button"
             >
@@ -264,7 +278,8 @@ export default function Hero() {
 
             {/* Secondary CTA */}
             <button 
-              className="inline-flex items-center justify-center rounded-14 text-black bg-[#EBEBEB]/70 border border-black/5 hover:bg-black/10 px-32 text-16 800:text-18 h-52 transition-all duration-200 ease-in-out font-sans font-500 gap-10"
+              onClick={() => handleScroll("how-it-works")}
+              className="inline-flex items-center justify-center rounded-14 text-black bg-[#EBEBEB]/70 border border-black/5 hover:bg-black/10 px-32 text-16 800:text-18 h-52 transition-all duration-200 ease-in-out font-sans font-500 gap-10 cursor-pointer"
               title="See Homi In Action" 
               type="button"
             >

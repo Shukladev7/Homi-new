@@ -11,7 +11,8 @@ export default function Footer() {
         { title: "Features", url: "#features" },
         { title: "Viva Practice", url: "#features" },
         { title: "Exam Preparation", url: "#features" },
-        { title: "Personalized Learning", url: "#how-it-works" }
+        { title: "Personalized Learning", url: "#how-it-works" },
+        { title: "Pricing", url: "#pricing" }
       ]
     },
     {
@@ -96,7 +97,7 @@ export default function Footer() {
               <span className="bg-gradient-to-r from-[#36AFFF] to-[#FF64C3] h-10 w-10 rounded-full" />
               <span className="font-650">HomiLearn</span>
             </div>
-            <p className="font-serif italic font-600 text-15 text-black/85">
+            <p className="font-serif italic font-600 text-11 800:text-13 text-black/85">
               Learning that knows you.
             </p>
             <p className="text-13 leading-relaxed text-secondary font-sans font-350 max-w-[35ch] mx-auto 800:mx-0">

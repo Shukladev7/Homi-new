@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 interface WaveSeparatorProps {
-  type: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  type: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 }
 
 export default function WaveSeparator({ type }: WaveSeparatorProps) {
@@ -55,7 +55,10 @@ export default function WaveSeparator({ type }: WaveSeparatorProps) {
     lowerColor = "#FFF9F2"; // Peach Start
   } else if (type === 10) {
     upperColor = "#FFEFD9"; // Peach End
-    lowerColor = "#FFFFFF";
+    lowerColor = "#FFFDF9"; // Pricing Cream Start
+  } else if (type === 11) {
+    upperColor = "#F6F0FF"; // Pricing Lavender End
+    lowerColor = "#FFFFFF"; // CTA White Start
   }
 
   return (

@@ -259,7 +259,7 @@ export default function WhatIsHomi() {
           </div>
 
           {/* Viewport card displaying Homi interactions */}
-          <div className="relative aspect-[1.4] w-full bg-white rounded-24 border border-black/8 shadow-[0px_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div className="relative w-full h-[330px] 600:h-[360px] 800:h-auto 800:aspect-[1.4] bg-white rounded-24 border border-black/8 shadow-[0px_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCard.id}
@@ -267,7 +267,7 @@ export default function WhatIsHomi() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: -10 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 p-40 flex flex-col justify-between"
+                className="absolute inset-0 p-20 800:p-40 flex flex-col justify-between"
               >
                 {/* Background soft glow gradient */}
                 <div 

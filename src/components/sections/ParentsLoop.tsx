@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function ParentsLoop() {
   return (
-    <section id="for-parents" className="py-80 800:py-120 max-w-1440 mx-auto px-20 overflow-x-clip">
-      <div className="w-full grid grid-cols-12 gap-40 800:gap-80 items-center">
+    <section id="for-parents" className="py-80 800:py-120 max-w-1440 mx-auto px-20 overflow-hidden">
+      <div className="w-full flex flex-col 800:grid 800:grid-cols-12 gap-y-40 800:gap-x-80 items-center">
         
         {/* Left Side: Headline and Supporting Copy (5 columns) */}
         <div className="col-span-12 800:col-span-5 flex flex-col gap-20 text-left section-header">
@@ -55,9 +55,9 @@ export default function ParentsLoop() {
             </div>
 
             {/* Dashboard Grid Content */}
-            <div className="grid grid-cols-12 gap-10">
+            <div className="grid grid-cols-1 600:grid-cols-12 gap-10">
               {/* Left Column: Streak and Strengths (5 cols) */}
-              <div className="col-span-5 flex flex-col gap-10">
+              <div className="col-span-1 600:col-span-5 flex flex-col gap-10">
                 {/* Streak */}
                 <div className="bg-white border border-black/5 p-8 rounded-12 shadow-sm flex items-center gap-8">
                   <span className="text-16">🔥</span>
@@ -94,7 +94,7 @@ export default function ParentsLoop() {
               </div>
 
               {/* Right Column: Weekly Progress Graph & Attention (7 cols) */}
-              <div className="col-span-7 flex flex-col gap-10">
+              <div className="col-span-1 600:col-span-7 flex flex-col gap-10">
                 {/* Weekly Progress Graph Mockup */}
                 <div className="bg-white border border-black/5 p-8 rounded-12 shadow-sm flex flex-col gap-6">
                   <span className="text-[9px] font-mono text-black/45 uppercase">Weekly Study Progress (hrs)</span>

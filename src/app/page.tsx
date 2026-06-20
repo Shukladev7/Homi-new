@@ -9,6 +9,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import PracticePrep from "@/components/sections/PracticePrep";
 import Curriculum from "@/components/sections/Curriculum";
 import Features from "@/components/sections/Features";
+import Pricing from "@/components/sections/Pricing";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 import WaveSeparator from "@/components/sections/WaveSeparator";
@@ -95,10 +96,16 @@ export default function Home() {
           <Testimonials />
         </div>
 
-        {/* Separator 10: Testimonials -> CTA (Peach to White) */}
+        {/* Separator 10: Testimonials -> Pricing (Peach to Cream) */}
         <WaveSeparator type={10} />
 
-        {/* Section 11: CTA - Soft White with ambient glow */}
+        {/* Section 11: Pricing - Premium Cream & Lavender Gradient */}
+        <Pricing />
+
+        {/* Separator 11: Pricing -> CTA (Lavender to White) */}
+        <WaveSeparator type={11} />
+
+        {/* Section 12: CTA - Soft White with ambient glow */}
         <div className="bg-white relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-400 h-400 bg-orange-500/3 rounded-full blur-3xl pointer-events-none" />
           <CTA />
