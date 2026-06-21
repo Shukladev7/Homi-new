@@ -1,13 +1,68 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  const yCard1 = useTransform(scrollY, [0, 600], [0, -40]);
-  const yCard2 = useTransform(scrollY, [0, 600], [0, -60]);
-  const yCard3 = useTransform(scrollY, [0, 600], [0, 40]);
-  const yCard4 = useTransform(scrollY, [0, 600], [0, 60]);
+  const yNetwork = useTransform(scrollY, [0, 600], [0, -50]);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+  const card3Ref = useRef<HTMLDivElement>(null);
+  const card4Ref = useRef<HTMLDivElement>(null);
+
+  const [coords, setCoords] = useState<{
+    c1: { x: number; y: number } | null;
+    c2: { x: number; y: number } | null;
+    c3: { x: number; y: number } | null;
+    c4: { x: number; y: number } | null;
+  }>({ c1: null, c2: null, c3: null, c4: null });
+
+  useEffect(() => {
+    const updateCoords = () => {
+      if (
+        containerRef.current &&
+        card1Ref.current &&
+        card2Ref.current &&
+        card3Ref.current &&
+        card4Ref.current
+      ) {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        
+        const getCardCenter = (cardEl: HTMLDivElement) => {
+          const rect = cardEl.getBoundingClientRect();
+          return {
+            x: rect.left - containerRect.left + rect.width / 2,
+            y: rect.top - containerRect.top + rect.height / 2,
+          };
+        };
+
+        setCoords({
+          c1: getCardCenter(card1Ref.current),
+          c2: getCardCenter(card2Ref.current),
+          c3: getCardCenter(card3Ref.current),
+          c4: getCardCenter(card4Ref.current),
+        });
+      }
+    };
+
+    updateCoords();
+    // Run layout measurements at multiple key intervals to ensure correctness as page layout shifts
+    const timers = [
+      setTimeout(updateCoords, 100),
+      setTimeout(updateCoords, 500),
+      setTimeout(updateCoords, 1000),
+      setTimeout(updateCoords, 2000),
+    ];
+
+    window.addEventListener("resize", updateCoords);
+    return () => {
+      window.removeEventListener("resize", updateCoords);
+      timers.forEach(clearTimeout);
+    };
+  }, []);
 
   const handleScroll = (targetId: string) => {
     const element = document.getElementById(targetId);
@@ -247,18 +302,7 @@ export default function Hero() {
             Meet Homi — your AI learning companion for Classes VI–XII. Personalized explanations, instant doubt solving, viva preparation, and parent insights in one platform.
           </p>
 
-          {/* Board Strip Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-10 px-24">
-            <span className="h-28 rounded-14 px-12 leading-28 bg-[#EBEBEB]/70 border border-black/5 font-sans font-500 text-12 text-secondary flex items-center gap-6 shadow-sm select-none whitespace-nowrap">
-              <span className="text-[#36AFFF]">✓</span> NCERT Aligned
-            </span>
-            <span className="h-28 rounded-14 px-12 leading-28 bg-[#EBEBEB]/70 border border-black/5 font-sans font-500 text-12 text-secondary flex items-center gap-6 shadow-sm select-none whitespace-nowrap">
-              <span className="text-[#36AFFF]">✓</span> Gujarat Board
-            </span>
-            <span className="h-28 rounded-14 px-12 leading-28 bg-[#EBEBEB]/70 border border-black/5 font-sans font-500 text-12 text-secondary flex items-center gap-6 shadow-sm select-none whitespace-nowrap">
-              <span className="text-[#36AFFF]">✓</span> ICSE Curriculum
-            </span>
-          </div>
+          {/* Board Strip Badges Removed */}
           
           <div className="flex flex-col 600:flex-row items-center gap-16 pointer-events-auto mt-10">
             {/* Primary CTA */}
@@ -305,135 +349,224 @@ export default function Hero() {
       {/* ========================================================
           HOMILEARN FLOATING EDUCATIONAL CARDS (Z-Index 30)
          ======================================================== */}
-      
-      {/* CARD 1 (Top Left) - Learning Gap Detected */}
-      <motion.div style={{ y: yCard1 }} className="hidden 1000:block absolute left-[6%] top-[18%] z-30">
-        <motion.div 
-          animate={{ y: [0, -8, 0], rotate: [0, 0.4, -0.4, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="w-[160px] bg-white/80 backdrop-blur-md border border-amber-200/50 rounded-16 p-12 shadow-[0px_8px_32px_rgba(245,158,11,0.06)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
-        >
-          {/* Subtle amber radial glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.08)_0%,transparent_85%)] pointer-events-none -z-10" />
-          
-          <div className="flex items-center justify-between border-b border-black/5 pb-6">
-            <span className="text-11 uppercase font-mono tracking-wider text-amber-600 font-semibold flex items-center gap-4">
-              <span className="w-5 h-5 rounded-full bg-amber-500 animate-pulse" />
-              01 / IDENTIFY
-            </span>
-            <span className="text-12">🔍</span>
-          </div>
-          
-          <div className="flex flex-col gap-2">
-            <span className="text-11 uppercase tracking-wider font-mono text-black/40">Grade 10</span>
-            <span className="text-15 font-bold text-black/85 leading-tight">Quadratic Equations</span>
-          </div>
-          
-          <div className="h-24 rounded-12 px-8 leading-24 bg-amber-500/10 border border-amber-500/15 text-amber-700 font-semibold text-11 w-max select-none shadow-sm flex items-center gap-3 mt-2">
-            <span>⚠️</span> Gap Detected
-          </div>
-        </motion.div>
-      </motion.div>
+      <motion.div 
+        ref={containerRef}
+        style={{ y: yNetwork }}
+        className="hidden 1000:block absolute inset-0 pointer-events-none z-30"
+      >
+        {/* SVG Connections Layer */}
+        {coords.c1 && coords.c2 && coords.c3 && coords.c4 && (
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ overflow: "visible" }}>
+            <defs>
+              {/* Linear Gradients following the flow */}
+              <linearGradient id="flow-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.75" />
+                <stop offset="100%" stopColor="#36AFFF" stopOpacity="0.75" />
+              </linearGradient>
+              <linearGradient id="flow-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#36AFFF" stopOpacity="0.75" />
+                <stop offset="100%" stopColor="#10B981" stopOpacity="0.75" />
+              </linearGradient>
+              <linearGradient id="flow-grad-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#10B981" stopOpacity="0.75" />
+                <stop offset="100%" stopColor="#9D5CFF" stopOpacity="0.75" />
+              </linearGradient>
 
-      {/* CARD 2 (Top Right) - Tracing Knowledge Path */}
-      <motion.div style={{ y: yCard2 }} className="hidden 1000:block absolute right-[6%] top-[16%] z-30">
-        <motion.div 
-          animate={{ y: [0, -10, 0], rotate: [0, -0.5, 0.5, 0] }}
-          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-          className="w-[160px] bg-white/80 backdrop-blur-md border border-blue-200/50 rounded-16 p-12 shadow-[0px_8px_32px_rgba(54,175,255,0.06)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
+              {/* Glowing SVG filter */}
+              <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Path 1: Card 1 (Identify) -> Card 2 (Trace) */}
+            {/* Curves upwards over the Homi Logo centerpiece */}
+            <motion.path
+              d={`M ${coords.c1.x} ${coords.c1.y} C ${(coords.c1.x + coords.c2.x) / 2} ${Math.min(coords.c1.y, coords.c2.y) - 120}, ${(coords.c1.x + coords.c2.x) / 2} ${Math.min(coords.c1.y, coords.c2.y) - 120}, ${coords.c2.x} ${coords.c2.y}`}
+              fill="none"
+              stroke="url(#flow-grad-1)"
+              strokeWidth="2.5"
+              strokeDasharray="6,6"
+              filter="url(#glow-filter)"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.6, ease: "easeInOut", delay: 0.6 }}
+            />
+
+            {/* Path 2: Card 2 (Trace) -> Card 3 (Rebuild) */}
+            {/* Curves outwards along the right edge */}
+            <motion.path
+              d={`M ${coords.c2.x} ${coords.c2.y} C ${coords.c2.x + 80} ${(coords.c2.y + coords.c3.y) / 2}, ${coords.c3.x + 80} ${(coords.c2.y + coords.c3.y) / 2}, ${coords.c3.x} ${coords.c3.y}`}
+              fill="none"
+              stroke="url(#flow-grad-2)"
+              strokeWidth="2.5"
+              strokeDasharray="6,6"
+              filter="url(#glow-filter)"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.8, ease: "easeInOut", delay: 1.4 }}
+            />
+
+            {/* Path 3: Card 3 (Rebuild) -> Card 4 (Solve) */}
+            {/* Curves downwards under the primary/secondary CTA buttons */}
+            <motion.path
+              d={`M ${coords.c3.x} ${coords.c3.y} C ${(coords.c3.x + coords.c4.x) / 2} ${Math.max(coords.c3.y, coords.c4.y) + 120}, ${(coords.c3.x + coords.c4.x) / 2} ${Math.max(coords.c3.y, coords.c4.y) + 120}, ${coords.c4.x} ${coords.c4.y}`}
+              fill="none"
+              stroke="url(#flow-grad-3)"
+              strokeWidth="2.5"
+              strokeDasharray="6,6"
+              filter="url(#glow-filter)"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.6, ease: "easeInOut", delay: 2.2 }}
+            />
+          </svg>
+        )}
+
+        {/* CARD 1 (Top Left) - Learning Gap Detected */}
+        <div 
+          ref={card1Ref} 
+          className="absolute left-[6%] top-[18%] pointer-events-auto"
         >
-          {/* Subtle blue radial glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(54,175,255,0.08)_0%,transparent_85%)] pointer-events-none -z-10" />
-          
-          <div className="flex items-center justify-between border-b border-black/5 pb-6">
-            <span className="text-11 uppercase font-mono tracking-wider text-blue-600 font-semibold flex items-center gap-4">
-              <span className="w-5 h-5 rounded-full bg-blue-500 animate-pulse" />
-              02 / TRACE
-            </span>
-            <span className="text-12">🕸️</span>
-          </div>
-          
-          <div className="flex flex-col gap-4">
-            <span className="text-11 font-semibold text-black/50 leading-none">Tracing Knowledge Path...</span>
+          <motion.div 
+            animate={{ y: [0, -8, 0], rotate: [0, 0.4, -0.4, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="w-[160px] bg-white/80 backdrop-blur-md border border-amber-200/50 rounded-16 p-12 shadow-[0px_8px_32px_rgba(245,158,11,0.06)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
+          >
+            {/* Subtle amber radial glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.08)_0%,transparent_85%)] pointer-events-none -z-10" />
             
-            <div className="flex flex-col gap-2 bg-blue-500/5 border border-blue-500/10 rounded-8 p-6 text-11">
-              <div className="flex justify-between font-mono text-[9px] text-black/40">
-                <span>ROOT CAUSE FOUND</span>
-                <span>G8</span>
-              </div>
-              <span className="font-bold text-blue-900 leading-tight">Factorization</span>
+            <div className="flex items-center justify-between border-b border-black/5 pb-6">
+              <span className="text-11 uppercase font-mono tracking-wider text-amber-600 font-semibold flex items-center gap-4">
+                <span className="w-5 h-5 rounded-full bg-amber-500 animate-pulse" />
+                01 / IDENTIFY
+              </span>
+              <span className="text-12">🔍</span>
             </div>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* CARD 3 (Bottom Left) - Foundation Strengthened */}
-      <motion.div style={{ y: yCard3 }} className="hidden 1000:block absolute left-[5%] bottom-[18%] z-30">
-        <motion.div 
-          animate={{ y: [0, -7, 0], rotate: [0, -0.4, 0.4, 0] }}
-          transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
-          className="w-[160px] bg-white/80 backdrop-blur-md border border-emerald-200/50 rounded-16 p-12 shadow-[0px_8px_32px_rgba(16,185,129,0.06)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
-        >
-          {/* Subtle green radial glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0%,transparent_85%)] pointer-events-none -z-10" />
-          
-          <div className="flex items-center justify-between border-b border-black/5 pb-6">
-            <span className="text-11 uppercase font-mono tracking-wider text-emerald-600 font-semibold flex items-center gap-4">
-              <span className="w-5 h-5 rounded-full bg-emerald-500 animate-pulse" />
-              03 / REBUILD
-            </span>
-            <span className="text-12">🛠️</span>
-          </div>
-          
-          <div className="flex flex-col gap-4">
+            
             <div className="flex flex-col gap-2">
-              <span className="text-[9px] uppercase tracking-wider font-mono text-black/40">FOUNDATION REBUILT</span>
-              <span className="text-15 font-bold text-black/85 leading-tight">3 Concepts Recovered</span>
+              <span className="text-11 uppercase tracking-wider font-mono text-black/40">Grade 10</span>
+              <span className="text-15 font-bold text-black/85 leading-tight">Quadratic Equations</span>
             </div>
             
-            {/* Mini checklist */}
-            <div className="flex flex-col gap-2 font-mono text-[9px] text-emerald-800 bg-emerald-500/5 border border-emerald-500/10 p-6 rounded-8">
-              <div className="flex items-center gap-4">
-                <span className="text-emerald-600 font-bold">✓</span> Expansion
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-emerald-600 font-bold">✓</span> Factoring
+            <div className="h-24 rounded-12 px-8 leading-24 bg-amber-500/10 border border-amber-500/15 text-amber-700 font-semibold text-11 w-max select-none shadow-sm flex items-center gap-3 mt-2">
+              <span>⚠️</span> Gap Detected
+            </div>
+          </motion.div>
+        </div>
+
+        {/* CARD 2 (Top Right) - Tracing Knowledge Path */}
+        <div 
+          ref={card2Ref} 
+          className="absolute right-[6%] top-[16%] pointer-events-auto"
+        >
+          <motion.div 
+            animate={{ y: [0, -10, 0], rotate: [0, -0.5, 0.5, 0] }}
+            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+            className="w-[160px] bg-white/80 backdrop-blur-md border border-blue-200/50 rounded-16 p-12 shadow-[0px_8px_32px_rgba(54,175,255,0.06)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
+          >
+            {/* Subtle blue radial glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(54,175,255,0.08)_0%,transparent_85%)] pointer-events-none -z-10" />
+            
+            <div className="flex items-center justify-between border-b border-black/5 pb-6">
+              <span className="text-11 uppercase font-mono tracking-wider text-blue-600 font-semibold flex items-center gap-4">
+                <span className="w-5 h-5 rounded-full bg-blue-500 animate-pulse" />
+                02 / TRACE
+              </span>
+              <span className="text-12">🕸️</span>
+            </div>
+            
+            <div className="flex flex-col gap-4">
+              <span className="text-11 font-semibold text-black/50 leading-none">Tracing Knowledge Path...</span>
+              
+              <div className="flex flex-col gap-2 bg-blue-500/5 border border-blue-500/10 rounded-8 p-6 text-11">
+                <div className="flex justify-between font-mono text-[9px] text-black/40">
+                  <span>ROOT CAUSE FOUND</span>
+                  <span>G8</span>
+                </div>
+                <span className="font-bold text-blue-900 leading-tight">Factorization</span>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </motion.div>
+          </motion.div>
+        </div>
 
-      {/* CARD 4 (Bottom Right) - Quadratic Equations Unlocked */}
-      <motion.div style={{ y: yCard4 }} className="hidden 1000:block absolute right-[5%] bottom-[16%] z-30">
-        <motion.div 
-          animate={{ y: [0, -9, 0], rotate: [0, 0.5, -0.5, 0] }}
-          transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="w-[160px] bg-gradient-to-b from-white to-[#F9F0FF] border-2 border-solid border-purple-300/60 rounded-16 p-12 shadow-[0px_12px_36px_rgba(157,92,255,0.12)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
-          style={{
-            boxShadow: "inset 0 1px 3px rgba(255,255,255,0.8), 0 16px 36px rgba(157,92,255,0.08)"
-          }}
+        {/* CARD 3 (Bottom Right) - Foundation Strengthened */}
+        <div 
+          ref={card3Ref} 
+          className="absolute right-[5%] bottom-[16%] pointer-events-auto"
         >
-          {/* Subtle purple radial glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(157,92,255,0.1)_0%,transparent_85%)] pointer-events-none -z-10" />
-          
-          <div className="flex items-center justify-between border-b border-purple-100 pb-6">
-            <span className="text-11 uppercase font-mono tracking-wider text-purple-600 font-bold flex items-center gap-4">
-              <span className="w-5 h-5 rounded-full bg-purple-500 animate-pulse" />
-              04 / SOLVE
-            </span>
-            <span className="text-12">🚀</span>
-          </div>
-          
-          <div className="flex flex-col gap-2">
-            <span className="text-11 uppercase tracking-wider font-mono text-purple-600/70 font-semibold">Grade 10</span>
-            <span className="text-15 font-bold text-purple-950 leading-tight">Quadratic Equations</span>
-          </div>
-          
-          <div className="h-24 rounded-12 px-10 leading-24 bg-purple-600 text-true-white font-bold text-11 w-max select-none shadow-md flex items-center gap-3 mt-2 animate-bounce">
-            Unlocked 🚀
-          </div>
-        </motion.div>
+          <motion.div 
+            animate={{ y: [0, -7, 0], rotate: [0, -0.4, 0.4, 0] }}
+            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
+            className="w-[160px] bg-white/80 backdrop-blur-md border border-emerald-200/50 rounded-16 p-12 shadow-[0px_8px_32px_rgba(16,185,129,0.06)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
+          >
+            {/* Subtle green radial glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0%,transparent_85%)] pointer-events-none -z-10" />
+            
+            <div className="flex items-center justify-between border-b border-black/5 pb-6">
+              <span className="text-11 uppercase font-mono tracking-wider text-emerald-600 font-semibold flex items-center gap-4">
+                <span className="w-5 h-5 rounded-full bg-emerald-500 animate-pulse" />
+                03 / REBUILD
+              </span>
+              <span className="text-12">🛠️</span>
+            </div>
+            
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <span className="text-[9px] uppercase tracking-wider font-mono text-black/40">FOUNDATION REBUILT</span>
+                <span className="text-15 font-bold text-black/85 leading-tight">3 Concepts Recovered</span>
+              </div>
+              
+              {/* Mini checklist */}
+              <div className="flex flex-col gap-2 font-mono text-[9px] text-emerald-800 bg-emerald-500/5 border border-emerald-500/10 p-6 rounded-8">
+                <div className="flex items-center gap-4">
+                  <span className="text-emerald-600 font-bold">✓</span> Expansion
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="text-emerald-600 font-bold">✓</span> Factoring
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* CARD 4 (Bottom Left) - Quadratic Equations Unlocked */}
+        <div 
+          ref={card4Ref} 
+          className="absolute left-[5%] bottom-[18%] pointer-events-auto"
+        >
+          <motion.div 
+            animate={{ y: [0, -9, 0], rotate: [0, 0.5, -0.5, 0] }}
+            transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="w-[160px] bg-gradient-to-b from-white to-[#F9F0FF] border-2 border-solid border-purple-300/60 rounded-16 p-12 shadow-[0px_12px_36px_rgba(157,92,255,0.12)] text-left flex flex-col gap-8 font-sans relative overflow-hidden"
+            style={{
+              boxShadow: "inset 0 1px 3px rgba(255,255,255,0.8), 0 16px 36px rgba(157,92,255,0.08)"
+            }}
+          >
+            {/* Subtle purple radial glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(157,92,255,0.1)_0%,transparent_85%)] pointer-events-none -z-10" />
+            
+            <div className="flex items-center justify-between border-b border-purple-100 pb-6">
+              <span className="text-11 uppercase font-mono tracking-wider text-purple-600 font-bold flex items-center gap-4">
+                <span className="w-5 h-5 rounded-full bg-purple-500 animate-pulse" />
+                04 / SOLVE
+              </span>
+              <span className="text-12">🚀</span>
+            </div>
+            
+            <div className="flex flex-col gap-2">
+              <span className="text-11 uppercase tracking-wider font-mono text-purple-600/70 font-semibold">Grade 10</span>
+              <span className="text-15 font-bold text-purple-950 leading-tight">Quadratic Equations</span>
+            </div>
+            
+            <div className="h-24 rounded-12 px-10 leading-24 bg-purple-600 text-true-white font-bold text-11 w-max select-none shadow-md flex items-center gap-3 mt-2 animate-bounce">
+              Unlocked 🚀
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
 
 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 interface WaveSeparatorProps {
-  type: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+  type: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 }
 
 export default function WaveSeparator({ type }: WaveSeparatorProps) {
@@ -48,8 +48,11 @@ export default function WaveSeparator({ type }: WaveSeparatorProps) {
     upperColor = "#FFFFFF";
     lowerColor = "#FBF7FF"; // Lavender Start
   } else if (type === 8) {
-    upperColor = "#F2E8FF"; // Lavender End
-    lowerColor = "#FFFFFF";
+    upperColor = "#F2E8FF"; // ParentsLoop Lavender End
+    lowerColor = "#F0FDFB"; // Teachers Soft Teal Start
+  } else if (type === 12) {
+    upperColor = "#E0F7F4"; // Teachers Soft Teal End
+    lowerColor = "#FFFFFF"; // Roles White Start
   } else if (type === 9) {
     upperColor = "#FFFFFF";
     lowerColor = "#FFF9F2"; // Peach Start

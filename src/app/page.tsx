@@ -4,6 +4,7 @@ import Problems from "@/components/sections/Problems";
 import WhatIsHomi from "@/components/sections/WhatIsHomi";
 import PersonalizedLearning from "@/components/sections/PersonalizedLearning";
 import ParentsLoop from "@/components/sections/ParentsLoop";
+import Teachers from "@/components/sections/Teachers";
 import Roles from "@/components/sections/Roles";
 import Testimonials from "@/components/sections/Testimonials";
 import PracticePrep from "@/components/sections/PracticePrep";
@@ -79,9 +80,16 @@ export default function Home() {
         <div className="bg-gradient-to-b from-[#FBF7FF] to-[#F2E8FF]">
           <ParentsLoop />
         </div>
-
-        {/* Separator 8: ParentsLoop -> Roles (Lavender to White) */}
+        {/* Separator 8: ParentsLoop -> Teachers (Lavender to Soft Teal) */}
         <WaveSeparator type={8} />
+
+        {/* Section 8.5: Built For Modern Teachers - Soft Teal Gradient */}
+        <div className="bg-gradient-to-b from-[#F0FDFB] to-[#E0F7F4]">
+          <Teachers />
+        </div>
+
+        {/* Separator 12: Teachers -> Roles (Soft Teal to White) */}
+        <WaveSeparator type={12} />
 
         {/* Section 9: Roles - Soft White */}
         <div className="bg-white">
