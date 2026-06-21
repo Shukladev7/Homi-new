@@ -383,9 +383,9 @@ export default function Hero() {
             </defs>
 
             {/* Path 1: Card 1 (Identify) -> Card 2 (Trace) */}
-            {/* Curves upwards over the Homi Logo centerpiece */}
+            {/* Curves Telegram-style along the left side */}
             <motion.path
-              d={`M ${coords.c1.x} ${coords.c1.y} C ${(coords.c1.x + coords.c2.x) / 2} ${Math.min(coords.c1.y, coords.c2.y) - 120}, ${(coords.c1.x + coords.c2.x) / 2} ${Math.min(coords.c1.y, coords.c2.y) - 120}, ${coords.c2.x} ${coords.c2.y}`}
+              d={`M ${coords.c1.x} ${coords.c1.y} C ${coords.c1.x - 80} ${(coords.c1.y + coords.c2.y) / 2}, ${coords.c2.x - 80} ${(coords.c1.y + coords.c2.y) / 2}, ${coords.c2.x} ${coords.c2.y}`}
               fill="none"
               stroke="url(#flow-grad-1)"
               strokeWidth="2.5"
@@ -397,9 +397,9 @@ export default function Hero() {
             />
 
             {/* Path 2: Card 2 (Trace) -> Card 3 (Rebuild) */}
-            {/* Curves outwards along the right edge */}
+            {/* Curves upwards over the Homi Logo centerpiece */}
             <motion.path
-              d={`M ${coords.c2.x} ${coords.c2.y} C ${coords.c2.x + 80} ${(coords.c2.y + coords.c3.y) / 2}, ${coords.c3.x + 80} ${(coords.c2.y + coords.c3.y) / 2}, ${coords.c3.x} ${coords.c3.y}`}
+              d={`M ${coords.c2.x} ${coords.c2.y} C ${(coords.c2.x + coords.c3.x) / 2} ${Math.min(coords.c2.y, coords.c3.y) - 120}, ${(coords.c2.x + coords.c3.x) / 2} ${Math.min(coords.c2.y, coords.c3.y) - 120}, ${coords.c3.x} ${coords.c3.y}`}
               fill="none"
               stroke="url(#flow-grad-2)"
               strokeWidth="2.5"
@@ -411,9 +411,9 @@ export default function Hero() {
             />
 
             {/* Path 3: Card 3 (Rebuild) -> Card 4 (Solve) */}
-            {/* Curves downwards under the primary/secondary CTA buttons */}
+            {/* Curves Telegram-style along the right side */}
             <motion.path
-              d={`M ${coords.c3.x} ${coords.c3.y} C ${(coords.c3.x + coords.c4.x) / 2} ${Math.max(coords.c3.y, coords.c4.y) + 120}, ${(coords.c3.x + coords.c4.x) / 2} ${Math.max(coords.c3.y, coords.c4.y) + 120}, ${coords.c4.x} ${coords.c4.y}`}
+              d={`M ${coords.c3.x} ${coords.c3.y} C ${coords.c3.x + 80} ${(coords.c3.y + coords.c4.y) / 2}, ${coords.c4.x + 80} ${(coords.c3.y + coords.c4.y) / 2}, ${coords.c4.x} ${coords.c4.y}`}
               fill="none"
               stroke="url(#flow-grad-3)"
               strokeWidth="2.5"
@@ -426,10 +426,10 @@ export default function Hero() {
           </svg>
         )}
 
-        {/* CARD 1 (Top Left) - Learning Gap Detected */}
+        {/* CARD 1 (Bottom Left) - Learning Gap Detected */}
         <div 
           ref={card1Ref} 
-          className="absolute left-[6%] top-[18%] pointer-events-auto"
+          className="absolute left-[5%] bottom-[18%] pointer-events-auto"
         >
           <motion.div 
             animate={{ y: [0, -8, 0], rotate: [0, 0.4, -0.4, 0] }}
@@ -458,10 +458,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* CARD 2 (Top Right) - Tracing Knowledge Path */}
+        {/* CARD 2 (Top Left) - Tracing Knowledge Path */}
         <div 
           ref={card2Ref} 
-          className="absolute right-[6%] top-[16%] pointer-events-auto"
+          className="absolute left-[6%] top-[18%] pointer-events-auto"
         >
           <motion.div 
             animate={{ y: [0, -10, 0], rotate: [0, -0.5, 0.5, 0] }}
@@ -493,10 +493,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* CARD 3 (Bottom Right) - Foundation Strengthened */}
+        {/* CARD 3 (Top Right) - Foundation Strengthened */}
         <div 
           ref={card3Ref} 
-          className="absolute right-[5%] bottom-[16%] pointer-events-auto"
+          className="absolute right-[6%] top-[16%] pointer-events-auto"
         >
           <motion.div 
             animate={{ y: [0, -7, 0], rotate: [0, -0.4, 0.4, 0] }}
@@ -533,10 +533,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* CARD 4 (Bottom Left) - Quadratic Equations Unlocked */}
+        {/* CARD 4 (Bottom Right) - Quadratic Equations Unlocked */}
         <div 
           ref={card4Ref} 
-          className="absolute left-[5%] bottom-[18%] pointer-events-auto"
+          className="absolute right-[5%] bottom-[16%] pointer-events-auto"
         >
           <motion.div 
             animate={{ y: [0, -9, 0], rotate: [0, 0.5, -0.5, 0] }}

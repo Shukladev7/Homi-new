@@ -15,9 +15,7 @@ interface MobileBoardNode {
   id: string;
   label: string;
   colorClass: string;
-  x: number; // percentage width (0-100)
-  y: number; // pixel height (0-1200)
-  glowColor: string;
+  y: number; // pixel height (0-1050)
 }
 
 export default function Curriculum() {
@@ -43,43 +41,39 @@ export default function Curriculum() {
   const startX = 500;
   const startY = 300;
 
-  // Mobile nodes array for vertical connected journey (height: 1200px)
+  // Mobile nodes array for vertical connected journey (height: 950px)
   const mobileNodes: MobileBoardNode[] = [
-    { id: "cbse", label: "CBSE", colorClass: "bg-blue-50/90 border-blue-200/60 text-blue-900", x: 35, y: 150, glowColor: "rgba(54, 175, 255, 0.15)" },
-    { id: "icse", label: "ICSE", colorClass: "bg-purple-50/90 border-purple-200/60 text-purple-900", x: 65, y: 220, glowColor: "rgba(186, 110, 255, 0.15)" },
-    { id: "ncert", label: "NCERT", colorClass: "bg-emerald-50/90 border-emerald-200/60 text-emerald-900", x: 35, y: 290, glowColor: "rgba(34, 197, 94, 0.15)" },
-    { id: "gseb", label: "GSEB", colorClass: "bg-amber-50/90 border-amber-200/60 text-amber-900", x: 65, y: 360, glowColor: "rgba(245, 158, 11, 0.15)" },
-    { id: "rbse", label: "RBSE", colorClass: "bg-pink-50/90 border-pink-200/60 text-pink-900", x: 35, y: 430, glowColor: "rgba(244, 63, 94, 0.15)" },
-    { id: "maharashtra", label: "Maharashtra Board", colorClass: "bg-orange-50/90 border-orange-200/60 text-orange-900", x: 65, y: 500, glowColor: "rgba(249, 115, 22, 0.15)" },
-    { id: "up", label: "UP Board", colorClass: "bg-teal-50/90 border-teal-200/60 text-teal-900", x: 35, y: 570, glowColor: "rgba(20, 184, 166, 0.15)" },
-    { id: "karnataka", label: "Karnataka Board", colorClass: "bg-indigo-50/90 border-indigo-200/60 text-indigo-900", x: 65, y: 640, glowColor: "rgba(99, 102, 241, 0.15)" },
-    { id: "tamilnadu", label: "Tamil Nadu Board", colorClass: "bg-rose-50/90 border-rose-200/60 text-rose-900", x: 35, y: 710, glowColor: "rgba(236, 72, 153, 0.15)" },
-    { id: "kerala", label: "Kerala Board", colorClass: "bg-emerald-50/90 border-emerald-200/60 text-emerald-900", x: 65, y: 780, glowColor: "rgba(16, 185, 129, 0.15)" },
-    { id: "mp", label: "MP Board", colorClass: "bg-sky-50/90 border-sky-200/60 text-sky-900", x: 35, y: 850, glowColor: "rgba(14, 165, 233, 0.15)" },
-    { id: "andhra", label: "Andhra Pradesh Board", colorClass: "bg-purple-50/90 border-purple-200/60 text-purple-900", x: 65, y: 920, glowColor: "rgba(139, 92, 246, 0.15)" },
-    { id: "telangana", label: "Telangana Board", colorClass: "bg-amber-50/90 border-amber-200/60 text-amber-900", x: 35, y: 990, glowColor: "rgba(217, 119, 6, 0.15)" },
-    { id: "punjab", label: "Punjab Board", colorClass: "bg-orange-50/90 border-orange-200/60 text-orange-900", x: 65, y: 1060, glowColor: "rgba(249, 115, 22, 0.15)" },
-    { id: "more", label: "+ More", colorClass: "bg-slate-50/90 border-slate-200/60 text-slate-900", x: 50, y: 1130, glowColor: "rgba(100, 116, 139, 0.15)" }
+    { id: "cbse", label: "CBSE", colorClass: "bg-blue-50/90 border-blue-200/60 text-blue-900", y: 110 },
+    { id: "icse", label: "ICSE", colorClass: "bg-purple-50/90 border-purple-200/60 text-purple-900", y: 200 },
+    { id: "ncert", label: "NCERT", colorClass: "bg-emerald-50/90 border-emerald-200/60 text-emerald-900", y: 290 },
+    { id: "gseb", label: "GSEB", colorClass: "bg-amber-50/90 border-amber-200/60 text-amber-900", y: 380 },
+    { id: "maharashtra", label: "Maharashtra", colorClass: "bg-orange-50/90 border-orange-200/60 text-orange-900", y: 470 },
+    { id: "karnataka", label: "Karnataka", colorClass: "bg-indigo-50/90 border-indigo-200/60 text-indigo-900", y: 560 },
+    { id: "tamilnadu", label: "Tamil Nadu", colorClass: "bg-rose-50/90 border-rose-200/60 text-rose-900", y: 650 },
+    { id: "kerala", label: "Kerala", colorClass: "bg-emerald-50/90 border-emerald-200/60 text-emerald-900", y: 740 },
+    { id: "mp", label: "MP Board", colorClass: "bg-sky-50/90 border-sky-200/60 text-sky-900", y: 830 },
+    { id: "more", label: "+ More", colorClass: "bg-slate-50/90 border-slate-200/60 text-slate-900", y: 920 }
   ];
 
-  // Mobile path segments connecting nodes sequentially
-  const mobileSegments = [
-    { x1: 50, y1: 60, x2: 35, y2: 150, glowColor: "rgba(54, 175, 255, 0.15)" },
-    { x1: 35, y1: 150, x2: 65, y2: 220, glowColor: "rgba(186, 110, 255, 0.15)" },
-    { x1: 65, y1: 220, x2: 35, y2: 290, glowColor: "rgba(34, 197, 94, 0.15)" },
-    { x1: 35, y1: 290, x2: 65, y2: 360, glowColor: "rgba(245, 158, 11, 0.15)" },
-    { x1: 65, y1: 360, x2: 35, y2: 430, glowColor: "rgba(244, 63, 94, 0.15)" },
-    { x1: 35, y1: 430, x2: 65, y2: 500, glowColor: "rgba(249, 115, 22, 0.15)" },
-    { x1: 65, y1: 500, x2: 35, y2: 570, glowColor: "rgba(20, 184, 166, 0.15)" },
-    { x1: 35, y1: 570, x2: 65, y2: 640, glowColor: "rgba(99, 102, 241, 0.15)" },
-    { x1: 65, y1: 640, x2: 35, y2: 710, glowColor: "rgba(236, 72, 153, 0.15)" },
-    { x1: 35, y1: 710, x2: 65, y2: 780, glowColor: "rgba(16, 185, 129, 0.15)" },
-    { x1: 65, y1: 780, x2: 35, y2: 850, glowColor: "rgba(14, 165, 233, 0.15)" },
-    { x1: 35, y1: 850, x2: 65, y2: 920, glowColor: "rgba(139, 92, 246, 0.15)" },
-    { x1: 65, y1: 920, x2: 35, y2: 990, glowColor: "rgba(217, 119, 6, 0.15)" },
-    { x1: 35, y1: 990, x2: 65, y2: 1060, glowColor: "rgba(249, 115, 22, 0.15)" },
-    { x1: 65, y1: 1060, x2: 50, y2: 1130, glowColor: "rgba(100, 116, 139, 0.15)" }
-  ];
+  const startXMobile = 50;
+  const startYMobile = 20; // Homi logo center y
+  
+  let mobilePathD = `M ${startXMobile} ${startYMobile}`;
+  mobileNodes.forEach((node, idx) => {
+    const y1 = idx === 0 ? startYMobile : mobileNodes[idx - 1].y;
+    const y2 = node.y;
+    const dy = y2 - y1;
+    // Alternate direction of the curve
+    const direction = idx % 2 === 0 ? 1 : -1;
+    const offset = 12 * direction;
+    
+    const cp1X = startXMobile + offset;
+    const cp1Y = y1 + dy * 0.25;
+    const cp2X = startXMobile + offset;
+    const cp2Y = y2 - dy * 0.25;
+    
+    mobilePathD += ` C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${startXMobile} ${y2}`;
+  });
 
   // Generates curved organic connection lines (Desktop)
   const getCurvePath = (x: number, y: number) => {
@@ -99,25 +93,15 @@ export default function Curriculum() {
     return `M ${startX} ${startY} C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${xPix} ${yPix}`;
   };
 
-  // Generates smooth vertical S-curves for Mobile
-  const getMobileCurvePath = (x1: number, y1: number, x2: number, y2: number) => {
-    const dy = y2 - y1;
-    const cp1X = x1;
-    const cp1Y = y1 + dy * 0.5;
-    const cp2X = x2;
-    const cp2Y = y2 - dy * 0.5;
-    return `M ${x1} ${y1} C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${x2} ${y2}`;
-  };
-
   return (
     <section 
       id="curriculum" 
-      className="py-40 800:py-60 overflow-hidden bg-transparent text-black"
+      className="py-0 overflow-hidden bg-transparent text-black"
     >
       <div className="max-w-1440 mx-auto px-24 flex flex-col items-center">
         
         {/* Header Block */}
-        <div className="text-center max-w-680 mb-40 800:mb-48 flex flex-col items-center gap-12 section-header">
+        <div className="text-center max-w-680 mb-24 800:mb-32 flex flex-col items-center gap-16 800:gap-20 section-header">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -132,7 +116,8 @@ export default function Curriculum() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="h2--exposure text-black leading-tight">
+            className="h2--exposure text-black leading-tight text-center px-4"
+          >
             Your Board. Your Syllabus. Fully Covered.
           </motion.h2>
           <motion.p
@@ -140,7 +125,7 @@ export default function Curriculum() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-16 800:text-18 text-black/60 font-sans font-350 leading-relaxed max-w-560 mt-4"
+            className="text-16 800:text-18 text-black/60 font-sans font-350 leading-relaxed max-w-[480px] 800:max-w-[560px] mt-4 text-center mx-auto"
           >
             Whether your child studies under CBSE, ICSE, State Boards, or NCERT-aligned curricula, Homi adapts to the syllabus they actually follow.
           </motion.p>
@@ -150,9 +135,6 @@ export default function Curriculum() {
         <div className="hidden 800:flex w-full overflow-x-auto scrollbar-none pb-20 mask-gradient-horizontal justify-center">
           
           <div className="relative w-[1000px] h-[600px] flex-shrink-0 select-none overflow-visible">
-            
-            {/* Subtle radial glow behind desktop network */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(54,175,255,0.06)_0%,rgba(186,110,255,0.04)_50%,transparent_100%)] pointer-events-none z-0" />
             
             {/* SVG Learning Network Connections */}
             <svg 
@@ -257,67 +239,69 @@ export default function Curriculum() {
         </div>
 
         {/* 2. MOBILE VIEWPORT (< 800px) */}
-        <div className="block 800:hidden w-full relative h-[1200px] max-w-[450px] overflow-visible mx-auto">
-          
-          {/* Subtle radial glow behind mobile network */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(54,175,255,0.06)_0%,rgba(186,110,255,0.04)_60%,transparent_100%)] pointer-events-none z-0" />
+        <div className="block 800:hidden w-full relative h-[950px] max-w-[450px] overflow-visible mx-auto">
           
           {/* Mobile SVG Learning Network Connections */}
           <svg 
             width="100%"
             height="100%"
             className="absolute inset-0 pointer-events-none z-0" 
-            viewBox="0 0 100 1200" 
+            viewBox="0 0 100 950" 
             preserveAspectRatio="none"
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
               <linearGradient id="mobile-glow-line-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#36AFFF" stopOpacity="0.45" />
-                <stop offset="50%" stopColor="#FF64C3" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#9D5CFF" stopOpacity="0.45" />
+                <stop offset="0%" stopColor="#36AFFF" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#FF64C3" stopOpacity="0.75" />
+                <stop offset="100%" stopColor="#9D5CFF" stopOpacity="0.8" />
               </linearGradient>
-              <filter id="mobile-svg-subtle-glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
             </defs>
 
-            {/* Draw curved lines segment by segment between nodes */}
-            {mobileSegments.map((segment, idx) => (
-              <g key={`mobile-path-${idx}`}>
-                {/* Subtle Background Glow Line */}
-                <motion.path 
-                  d={getMobileCurvePath(segment.x1, segment.y1, segment.x2, segment.y2)}
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.8 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 1.2, delay: idx * 0.04 + 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                  stroke={segment.glowColor}
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  fill="none"
-                  filter="url(#mobile-svg-subtle-glow)"
-                />
-                {/* Foreground Main Line */}
-                <motion.path 
-                  d={getMobileCurvePath(segment.x1, segment.y1, segment.x2, segment.y2)}
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 1.0, delay: idx * 0.04 + 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                  stroke="url(#mobile-glow-line-grad)"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </g>
-            ))}
+            {/* Subtle Outer Glow Line */}
+            <motion.path 
+              d={mobilePathD}
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.15 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 2.0, ease: "easeInOut" }}
+              stroke="url(#mobile-glow-line-grad)"
+              strokeWidth="8"
+              strokeLinecap="round"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+            />
+            {/* Subtle Inner Glow Line */}
+            <motion.path 
+              d={mobilePathD}
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.35 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.8, ease: "easeInOut" }}
+              stroke="url(#mobile-glow-line-grad)"
+              strokeWidth="4"
+              strokeLinecap="round"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+            />
+            {/* Foreground Main Line */}
+            <motion.path 
+              d={mobilePathD}
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              stroke="url(#mobile-glow-line-grad)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+            />
           </svg>
 
           {/* Central Homi Logo centerpiece at the top */}
-          <div className="absolute left-[50%] top-[60px] -translate-x-[50%] -translate-y-[50%] z-20 flex items-center justify-center">
+          <div className="absolute left-[50%] top-[20px] -translate-x-[50%] -translate-y-[50%] z-20 flex items-center justify-center">
             
             {/* Outer Pulsing Glow rings */}
             <div className="absolute w-[130px] h-[130px] rounded-full bg-gradient-to-tr from-[#36AFFF]/12 via-[#FF64C3]/10 to-[#9D5CFF]/12 blur-xl pointer-events-none -z-10 animate-pulse" />
@@ -343,28 +327,45 @@ export default function Curriculum() {
 
           {/* Mobile Board Nodes */}
           {mobileNodes.map((node, idx) => (
-            <motion.div
+            <div
               key={`mobile-${node.id}`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.04 + 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-              whileHover={{ y: -3, scale: 1.02 }}
+              className="absolute z-10"
               style={{
-                left: `${node.x}%`,
+                left: `50%`,
                 top: `${node.y}px`,
                 transform: "translate(-50%, -50%)"
               }}
-              className={`absolute z-10 px-14 py-6 rounded-full border border-solid font-sans font-500 text-11 text-center w-[120px] max-w-[120px] leading-tight shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 pointer-events-auto select-none ${node.colorClass}`}
             >
-              {node.label}
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  scale: 1,
+                  y: [0, -4, 0]
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  opacity: { duration: 0.5, delay: idx * 0.04 + 0.3, ease: [0.16, 1, 0.3, 1] },
+                  scale: { duration: 0.5, delay: idx * 0.04 + 0.3, ease: [0.16, 1, 0.3, 1] },
+                  y: {
+                    duration: 4 + (idx % 3) * 0.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: idx * 0.04 + 0.8
+                  }
+                }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className={`px-14 py-6 rounded-full border border-solid font-sans font-500 text-11 text-center w-[140px] max-w-[140px] leading-tight shadow-sm hover:shadow-md cursor-pointer transition-shadow duration-300 pointer-events-auto select-none ${node.colorClass}`}
+              >
+                {node.label}
+              </motion.div>
+            </div>
           ))}
 
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-1 800:grid-cols-3 gap-24 mt-40 800:mt-48 max-w-1000 w-full px-24 justify-center items-stretch">
+        <div className="grid grid-cols-1 800:grid-cols-3 gap-24 mt-24 800:mt-32 max-w-1000 w-full px-24 justify-center items-stretch">
           
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
@@ -407,7 +408,7 @@ export default function Curriculum() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="mt-40 800:mt-48 text-center"
+          className="mt-24 800:mt-32 text-center"
         >
           <p className="font-serif font-650 italic text-20 leading-relaxed text-black/80 flex flex-col gap-4">
             <span>One platform. Every major board.</span>
