@@ -245,7 +245,8 @@ export default function Curriculum() {
           <svg 
             width="100%"
             height="100%"
-            className="absolute inset-0 pointer-events-none z-0" 
+            style={{ zIndex: 1, overflow: "visible", position: "absolute", inset: 0 }}
+            className="pointer-events-none" 
             viewBox="0 0 100 950" 
             preserveAspectRatio="none"
             fill="none" 
@@ -253,9 +254,9 @@ export default function Curriculum() {
           >
             <defs>
               <linearGradient id="mobile-glow-line-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#36AFFF" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#FF64C3" stopOpacity="0.75" />
-                <stop offset="100%" stopColor="#9D5CFF" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#36AFFF" stopOpacity="1.0" />
+                <stop offset="50%" stopColor="#FF64C3" stopOpacity="1.0" />
+                <stop offset="100%" stopColor="#9D5CFF" stopOpacity="1.0" />
               </linearGradient>
             </defs>
 
@@ -263,11 +264,11 @@ export default function Curriculum() {
             <motion.path 
               d={mobilePathD}
               initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 0.15 }}
+              whileInView={{ pathLength: 1, opacity: 0.25 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 2.0, ease: "easeInOut" }}
               stroke="url(#mobile-glow-line-grad)"
-              strokeWidth="8"
+              strokeWidth="12"
               strokeLinecap="round"
               fill="none"
               vectorEffect="non-scaling-stroke"
@@ -276,11 +277,11 @@ export default function Curriculum() {
             <motion.path 
               d={mobilePathD}
               initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 0.35 }}
+              whileInView={{ pathLength: 1, opacity: 0.45 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.8, ease: "easeInOut" }}
               stroke="url(#mobile-glow-line-grad)"
-              strokeWidth="4"
+              strokeWidth="6"
               strokeLinecap="round"
               fill="none"
               vectorEffect="non-scaling-stroke"
@@ -293,7 +294,7 @@ export default function Curriculum() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
               stroke="url(#mobile-glow-line-grad)"
-              strokeWidth="1.5"
+              strokeWidth="2.5"
               strokeLinecap="round"
               fill="none"
               vectorEffect="non-scaling-stroke"
@@ -301,7 +302,10 @@ export default function Curriculum() {
           </svg>
 
           {/* Central Homi Logo centerpiece at the top */}
-          <div className="absolute left-[50%] top-[20px] -translate-x-[50%] -translate-y-[50%] z-20 flex items-center justify-center">
+          <div 
+            className="absolute left-[50%] top-[20px] -translate-x-[50%] -translate-y-[50%] flex items-center justify-center"
+            style={{ zIndex: 3 }}
+          >
             
             {/* Outer Pulsing Glow rings */}
             <div className="absolute w-[130px] h-[130px] rounded-full bg-gradient-to-tr from-[#36AFFF]/12 via-[#FF64C3]/10 to-[#9D5CFF]/12 blur-xl pointer-events-none -z-10 animate-pulse" />
@@ -329,11 +333,12 @@ export default function Curriculum() {
           {mobileNodes.map((node, idx) => (
             <div
               key={`mobile-${node.id}`}
-              className="absolute z-10"
+              className="absolute"
               style={{
                 left: `50%`,
                 top: `${node.y}px`,
-                transform: "translate(-50%, -50%)"
+                transform: "translate(-50%, -50%)",
+                zIndex: 2
               }}
             >
               <motion.div
