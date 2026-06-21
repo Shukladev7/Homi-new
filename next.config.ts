@@ -8,8 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
+    formats: ["image/avif", "image/webp"],
   },
-  allowedDevOrigins: ['172.20.10.4'],
+  allowedDevOrigins: ["172.20.10.4"],
+  compress: true,
+  poweredByHeader: false,
 };
 
 export default nextConfig;

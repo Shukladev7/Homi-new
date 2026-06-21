@@ -7,29 +7,30 @@ export default function Footer() {
     {
       title: "Platform",
       links: [
-        { title: "How It Works", url: "#how-it-works" },
-        { title: "Features", url: "#features" },
-        { title: "Viva Practice", url: "#features" },
-        { title: "Exam Preparation", url: "#features" },
-        { title: "Personalized Learning", url: "#how-it-works" },
-        { title: "Pricing", url: "#pricing" }
+        { title: "How It Works", url: "/how-it-works" },
+        { title: "Features", url: "/features" },
+        { title: "Viva Practice", url: "/features" },
+        { title: "Exam Preparation", url: "/features" },
+        { title: "Personalized Learning", url: "/how-it-works" },
+        { title: "Pricing", url: "/pricing" }
       ]
     },
     {
       title: "For Families",
       links: [
-        { title: "For Students", url: "#how-it-works" },
-        { title: "For Parents", url: "#for-parents" },
-        { title: "Parent Dashboard", url: "#for-parents" },
-        { title: "Progress Tracking", url: "#for-parents" },
-        { title: "Learning Insights", url: "#for-parents" }
+        { title: "For Students", url: "/features" },
+        { title: "For Parents", url: "/parents" },
+        { title: "Parent Dashboard", url: "/parents" },
+        { title: "Progress Tracking", url: "/parents" },
+        { title: "Learning Insights", url: "/parents" }
       ]
     },
     {
       title: "Resources",
       links: [
-        { title: "Help Center", url: "#" },
-        { title: "FAQs", url: "#" },
+        { title: "Blog", url: "/blog" },
+        { title: "For Teachers", url: "/teachers" },
+        { title: "FAQs", url: "#faq" },
         { title: "Contact Us", url: "#cta" },
         { title: "Privacy Policy", url: "#" },
         { title: "Terms of Service", url: "#" }
@@ -46,13 +47,15 @@ export default function Footer() {
   ];
 
   const trustItems = [
-    "Built for students in Classes VI–XII",
-    "NCERT",
-    "Gujarat Board",
+    "AI Tutor for Classes VI–XII",
+    "CBSE",
     "ICSE",
-    "Personalized Learning",
+    "NCERT",
+    "10+ State Boards",
+    "Adaptive Learning",
     "AI Viva Practice",
-    "Parent Insights"
+    "Parent Insights",
+    "AI Tools for Teachers"
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {

@@ -14,12 +14,20 @@ import Pricing from "@/components/sections/Pricing";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 import WaveSeparator from "@/components/sections/WaveSeparator";
+import FAQ from "@/components/sections/FAQ";
 
 export default function Home() {
   return (
     <div className="relative w-full min-h-screen bg-[#F8F8F8] text-primary flex flex-col">
+      {/* Skip to content link for keyboard navigation */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-black focus:text-white focus:px-16 focus:py-8 focus:rounded-8 focus:text-14 focus:font-sans focus:font-500"
+      >
+        Skip to main content
+      </a>
       <Header />
-      <main className="flex-1 w-full flex flex-col">
+      <main id="main-content" className="flex-1 w-full flex flex-col" role="main">
         {/* Section 1: Hero - Soft White */}
         <div className="bg-white">
           <Hero />
@@ -117,6 +125,11 @@ export default function Home() {
         <div className="bg-white relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-400 h-400 bg-orange-500/3 rounded-full blur-3xl pointer-events-none" />
           <CTA />
+        </div>
+
+        {/* FAQ Section - SEO optimized */}
+        <div className="bg-gradient-to-b from-white to-[#F8F8F8]">
+          <FAQ />
         </div>
       </main>
       <Footer />

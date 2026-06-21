@@ -51,7 +51,7 @@ export default function Header() {
             onClick={(e) => handleScroll(e, "hero")}
             className="flex items-center select-none cursor-pointer focus:outline-none"
           >
-            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" />
+            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" width={120} height={36} />
           </button>
           
           <button
@@ -125,7 +125,7 @@ export default function Header() {
             onClick={(e) => handleScroll(e, "hero")}
             className="flex items-center select-none cursor-pointer focus:outline-none"
           >
-            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" />
+            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" width={120} height={36} />
           </button>
 
           {/* Center Navigation */}

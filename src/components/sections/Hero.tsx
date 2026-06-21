@@ -265,6 +265,9 @@ export default function Hero() {
               src="/logo1.png" 
               alt="HomiLearn Brand Logo" 
               className="h-88 800:h-120 w-auto object-contain drop-shadow-[0_8px_32px_rgba(54,175,255,0.12)]"
+              width={120}
+              height={125}
+              fetchPriority="high"
             />
           </div>
 
