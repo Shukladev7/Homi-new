@@ -6,6 +6,21 @@ export default function CTA() {
   return (
     <section id="cta" className="pt-100 pb-80 800:py-100 800:pt-150 max-w-760 mx-auto flex flex-col justify-center items-center px-20 800:px-0 section-header">
       
+      {/* Brand Anchor Logo1 */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-24 800:mb-32 select-none"
+      >
+        <img 
+          src="/logo1.png" 
+          alt="HomiLearn Brand Logo" 
+          className="h-48 800:h-56 w-auto object-contain drop-shadow-[0_8px_32px_rgba(255,100,195,0.08)]"
+        />
+      </motion.div>
+
       {/* Main Headline */}
       <h2 className="text-center font-serif leading-none flex flex-col gap-12 items-center">
         <span className="block text-35 800:text-48 text-black font-700 tracking-tight">

@@ -93,8 +93,8 @@ export default function Footer() {
           
           {/* Logo + Tagline + Description */}
           <div className="col-span-12 800:col-span-4 flex flex-col gap-16 text-center 800:text-left">
-            <div className="flex items-center gap-6 font-serif font-700 text-18 text-black tracking-tight justify-center 800:justify-start">
-              <span className="bg-gradient-to-r from-[#36AFFF] to-[#FF64C3] h-10 w-10 rounded-full" />
+            <div className="flex items-center gap-8 font-serif font-700 text-18 text-black tracking-tight justify-center 800:justify-start">
+              <img src="/logo.png" alt="Homi logo" className="h-22 w-auto object-contain" />
               <span className="font-650">HomiLearn</span>
             </div>
             <p className="font-serif italic font-600 text-11 800:text-13 text-black/85">

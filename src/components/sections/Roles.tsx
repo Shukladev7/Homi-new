@@ -124,7 +124,7 @@ export default function Roles() {
   ];
 
   return (
-    <section className="py-80 800:py-120 max-w-1440 mx-auto px-20">
+    <section id="for-teachers" className="py-80 800:py-120 max-w-1440 mx-auto px-20">
       <div className="w-full">
         {/* Section Header */}
         <div className="text-center mb-60 flex flex-col gap-12 items-center section-header">

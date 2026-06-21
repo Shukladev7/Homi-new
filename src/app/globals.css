@@ -128,6 +128,19 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #F8F8F8;
+  transition: font-size 0.15s ease-in-out;
+}
+
+@media (min-width: 800px) {
+  html {
+    font-size: 106%; /* Scales up all layout elements, typography, and spacing throughout desktop viewports by 6% */
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 110%; /* Scales up all layout elements, typography, and spacing throughout desktop viewports by 10% */
+  }
 }
 
 body {

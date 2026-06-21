@@ -10,6 +10,7 @@ export default function Header() {
     { title: "How It Works", targetId: "how-it-works" },
     { title: "Features", targetId: "features" },
     { title: "For Parents", targetId: "for-parents" },
+    { title: "For Teachers", targetId: "for-teachers" },
     { title: "Pricing", targetId: "pricing" },
   ];
 
@@ -48,10 +49,9 @@ export default function Header() {
         <div className="flex items-center justify-between h-[52px] w-full">
           <button 
             onClick={(e) => handleScroll(e, "hero")}
-            className="flex items-center gap-6 font-serif font-700 text-15 text-black tracking-tight select-none cursor-pointer focus:outline-none"
+            className="flex items-center select-none cursor-pointer focus:outline-none"
           >
-            <span className="bg-gradient-to-r from-[#36AFFF] to-[#FF64C3] h-10 w-10 rounded-full" />
-            <span className="font-650">homi</span>
+            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" />
           </button>
           
           <button
@@ -105,7 +105,7 @@ export default function Header() {
               <div className="flex flex-col gap-10">
                 <button
                   onClick={(e) => handleScroll(e, "cta")}
-                  className="w-full text-center h-50 rounded-20 text-true-white bg-black px-24 text-16 font-500 flex items-center justify-center cursor-pointer shadow-sm hover:bg-black/90 active:scale-[0.98] transition-all"
+                  className="w-full text-center h-50 rounded-full text-true-white bg-black px-24 text-16 font-500 flex items-center justify-center cursor-pointer shadow-sm hover:bg-black/90 active:scale-[0.98] transition-all"
                   title="Start Free"
                 >
                   Start Free
@@ -123,10 +123,9 @@ export default function Header() {
           {/* Logo (Left) */}
           <button 
             onClick={(e) => handleScroll(e, "hero")}
-            className="flex items-center gap-6 font-serif font-700 text-15 text-black tracking-tight select-none pr-10 border-r border-black/5 cursor-pointer focus:outline-none"
+            className="flex items-center select-none cursor-pointer focus:outline-none"
           >
-            <span className="bg-gradient-to-r from-[#36AFFF] to-[#FF64C3] h-10 w-10 rounded-full" />
-            <span className="font-650">homi</span>
+            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" />
           </button>
 
           {/* Center Navigation */}
@@ -149,7 +148,7 @@ export default function Header() {
           <div className="flex items-center pl-10 border-l border-black/5">
             <button
               onClick={(e) => handleScroll(e, "cta")}
-              className="h-32 rounded-10 bg-black hover:bg-black/85 active:scale-[0.96] text-true-white text-12 font-sans font-500 px-16 flex items-center justify-center shadow-sm select-none cursor-pointer transition-all duration-200"
+              className="h-32 rounded-full bg-black hover:bg-black/85 active:scale-[0.96] text-true-white text-12 font-sans font-500 px-16 flex items-center justify-center shadow-sm select-none cursor-pointer transition-all duration-200"
             >
               Start Free
             </button>
