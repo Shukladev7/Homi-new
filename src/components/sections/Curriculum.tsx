@@ -55,7 +55,7 @@ export default function Curriculum() {
     { id: "more", label: "+ More", colorClass: "bg-slate-50/90 border-slate-200/60 text-slate-900", y: 920 }
   ];
 
-  const startXMobile = 50;
+  const startXMobile = 80;
   const startYMobile = 20; // Homi logo center y
   
   let mobilePathD = `M ${startXMobile} ${startYMobile}`;
@@ -65,7 +65,7 @@ export default function Curriculum() {
     const dy = y2 - y1;
     // Alternate direction of the curve
     const direction = idx % 2 === 0 ? 1 : -1;
-    const offset = 12 * direction;
+    const offset = 20 * direction;
     
     const cp1X = startXMobile + offset;
     const cp1Y = y1 + dy * 0.25;
@@ -242,64 +242,61 @@ export default function Curriculum() {
         <div className="block 800:hidden w-full relative h-[950px] max-w-[450px] overflow-visible mx-auto">
           
           {/* Mobile SVG Learning Network Connections */}
-          <svg 
-            width="100%"
-            height="100%"
-            style={{ zIndex: 1, overflow: "visible", position: "absolute", inset: 0 }}
-            className="pointer-events-none" 
-            viewBox="0 0 100 950" 
-            preserveAspectRatio="none"
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="mobile-glow-line-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#36AFFF" stopOpacity="1.0" />
-                <stop offset="50%" stopColor="#FF64C3" stopOpacity="1.0" />
-                <stop offset="100%" stopColor="#9D5CFF" stopOpacity="1.0" />
-              </linearGradient>
-            </defs>
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-[160px] pointer-events-none" style={{ zIndex: 1 }}>
+            <svg 
+              width="160"
+              height="950"
+              viewBox="0 0 160 950" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-full overflow-visible"
+            >
+              <defs>
+                <linearGradient id="mobile-glow-line-grad" gradientUnits="userSpaceOnUse" x1="80" y1="20" x2="80" y2="920">
+                  <stop offset="0%" stopColor="#36AFFF" stopOpacity="1.0" />
+                  <stop offset="50%" stopColor="#FF64C3" stopOpacity="1.0" />
+                  <stop offset="100%" stopColor="#9D5CFF" stopOpacity="1.0" />
+                </linearGradient>
+              </defs>
 
-            {/* Subtle Outer Glow Line */}
-            <motion.path 
-              d={mobilePathD}
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 0.25 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 2.0, ease: "easeInOut" }}
-              stroke="url(#mobile-glow-line-grad)"
-              strokeWidth="12"
-              strokeLinecap="round"
-              fill="none"
-              vectorEffect="non-scaling-stroke"
-            />
-            {/* Subtle Inner Glow Line */}
-            <motion.path 
-              d={mobilePathD}
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 0.45 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.8, ease: "easeInOut" }}
-              stroke="url(#mobile-glow-line-grad)"
-              strokeWidth="6"
-              strokeLinecap="round"
-              fill="none"
-              vectorEffect="non-scaling-stroke"
-            />
-            {/* Foreground Main Line */}
-            <motion.path 
-              d={mobilePathD}
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              stroke="url(#mobile-glow-line-grad)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              fill="none"
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
+              {/* Subtle Outer Glow Line */}
+              <motion.path 
+                d={mobilePathD}
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 0.35 }}
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 2.0, ease: "easeInOut" }}
+                stroke="url(#mobile-glow-line-grad)"
+                strokeWidth="12"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* Subtle Inner Glow Line */}
+              <motion.path 
+                d={mobilePathD}
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 0.55 }}
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 1.8, ease: "easeInOut" }}
+                stroke="url(#mobile-glow-line-grad)"
+                strokeWidth="6"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* Foreground Main Line */}
+              <motion.path 
+                d={mobilePathD}
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                stroke="url(#mobile-glow-line-grad)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </div>
 
           {/* Central Homi Logo centerpiece at the top */}
           <div 
