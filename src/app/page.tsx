@@ -83,8 +83,8 @@ export default function Home() {
         {/* Separator 8: ParentsLoop -> Teachers (Lavender to Soft Teal) */}
         <WaveSeparator type={8} />
 
-        {/* Section 8.5: Built For Modern Teachers - Soft Teal Gradient */}
-        <div className="bg-gradient-to-b from-[#F0FDFB] to-[#E0F7F4]">
+        {/* Section 8.5: Built For Modern Teachers - Soft Blue to Lavender Gradient */}
+        <div className="bg-gradient-to-b from-[#F2F6FF] to-[#F5F2FF]">
           <Teachers />
         </div>
 
