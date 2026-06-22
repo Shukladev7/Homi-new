@@ -1,4 +1,4 @@
-import Header from "@/components/sections/Header";
+import LandingLayout from "@/components/landing/LandingLayout";
 import Hero from "@/components/sections/Hero";
 import Problems from "@/components/sections/Problems";
 import WhatIsHomi from "@/components/sections/WhatIsHomi";
@@ -12,22 +12,12 @@ import Curriculum from "@/components/sections/Curriculum";
 import Features from "@/components/sections/Features";
 import Pricing from "@/components/sections/Pricing";
 import CTA from "@/components/sections/CTA";
-import Footer from "@/components/sections/Footer";
 import WaveSeparator from "@/components/sections/WaveSeparator";
 import FAQ from "@/components/sections/FAQ";
 
 export default function Home() {
   return (
-    <div className="relative w-full min-h-screen bg-[#F8F8F8] text-primary flex flex-col">
-      {/* Skip to content link for keyboard navigation */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-black focus:text-white focus:px-16 focus:py-8 focus:rounded-8 focus:text-14 focus:font-sans focus:font-500"
-      >
-        Skip to main content
-      </a>
-      <Header />
-      <main id="main-content" className="flex-1 w-full flex flex-col" role="main">
+    <LandingLayout>
         {/* Section 1: Hero - Soft White */}
         <div className="bg-white">
           <Hero />
@@ -131,8 +121,6 @@ export default function Home() {
         <div className="bg-gradient-to-b from-white to-[#F8F8F8]">
           <FAQ />
         </div>
-      </main>
-      <Footer />
-    </div>
+    </LandingLayout>
   );
 }

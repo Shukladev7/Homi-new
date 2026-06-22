@@ -1,100 +1,70 @@
 import type { MetadataRoute } from "next";
+import { getPublishedPosts } from "@/lib/db";
 
 const siteUrl = "https://www.homilearn.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date().toISOString();
-
-  return [
+  
+  // Static pages configuration
+  const staticPages = [
     {
       url: siteUrl,
       lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 1,
+      changeFrequency: "weekly" as const,
+      priority: 1.0,
     },
     {
       url: `${siteUrl}/how-it-works`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
       url: `${siteUrl}/features`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
       url: `${siteUrl}/parents`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
       url: `${siteUrl}/teachers`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
       url: `${siteUrl}/pricing`,
       lastModified: currentDate,
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog`,
       lastModified: currentDate,
-      changeFrequency: "daily",
+      changeFrequency: "daily" as const,
       priority: 0.7,
     },
-    {
-      url: `${siteUrl}/blog/best-ai-tutor-for-cbse-students`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/blog/how-adaptive-learning-improves-exam-scores`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/blog/ai-study-companion-vs-traditional-tuition`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/blog/how-ai-helps-students-prepare-for-viva`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/blog/benefits-of-learning-gap-detection`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/blog/how-teachers-save-time-using-ai`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/blog/best-ai-lesson-plan-generator-for-teachers`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/blog/using-ai-for-worksheet-creation`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
   ];
+
+  try {
+    // Dynamic blog articles query from database
+    const publishedPosts = await getPublishedPosts();
+    const blogPages = publishedPosts.map((post) => ({
+      url: `${siteUrl}/blog/${post.slug}`,
+      lastModified: post.publishedAt || post.createdAt,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+
+    return [...staticPages, ...blogPages];
+  } catch (error) {
+    console.error("Sitemap generation error:", error);
+    return staticPages; // Fallback to static pages only on DB connection error
+  }
 }

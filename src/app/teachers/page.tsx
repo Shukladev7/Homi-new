@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import InteriorLayout from "@/components/interior/InteriorLayout";
+import InternalLayout from "@/components/interior/InternalLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -58,7 +58,7 @@ const benefits = [
 
 export default function TeachersPage() {
   return (
-    <InteriorLayout>
+    <InternalLayout>
       {/* Hero */}
       <section className="pt-60 800:pt-90 pb-40 800:pb-60 px-24 800:px-40 text-center">
         <div className="max-w-[700px] mx-auto flex flex-col gap-16 items-center section-header">
@@ -157,6 +157,6 @@ export default function TeachersPage() {
           </div>
         </div>
       </section>
-    </InteriorLayout>
+    </InternalLayout>
   );
 }

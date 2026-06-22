@@ -17,7 +17,7 @@ export default function CTA() {
         <img 
           src="/logo1.png" 
           alt="HomiLearn Brand Logo" 
-          className="h-48 800:h-56 w-auto object-contain drop-shadow-[0_8px_32px_rgba(255,100,195,0.08)]"
+          className="h-54 800:h-64 w-auto object-contain drop-shadow-[0_8px_32px_rgba(255,100,195,0.08)]"
         />
       </motion.div>
 

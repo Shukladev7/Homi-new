@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
 
   const menuItems = [
     { title: "How It Works", targetId: "how-it-works" },
@@ -12,6 +16,7 @@ export default function Header() {
     { title: "For Parents", targetId: "for-parents" },
     { title: "For Teachers", targetId: "for-teachers" },
     { title: "Pricing", targetId: "pricing" },
+    { title: "Blog", href: "/blog" },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
@@ -47,12 +52,21 @@ export default function Header() {
            style={{ height: isOpen ? "auto" : "52px" }}>
         
         <div className="flex items-center justify-between h-[52px] w-full">
-          <button 
-            onClick={(e) => handleScroll(e, "hero")}
-            className="flex items-center select-none cursor-pointer focus:outline-none"
-          >
-            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" width={120} height={36} />
-          </button>
+          {isHomepage ? (
+            <button 
+              onClick={(e) => handleScroll(e, "hero")}
+              className="flex items-center select-none cursor-pointer focus:outline-none"
+            >
+              <img src="/logo.png" alt="Homi logo" className="h-32 w-auto object-contain" width={120} height={36} />
+            </button>
+          ) : (
+            <Link 
+              href="/"
+              className="flex items-center select-none cursor-pointer focus:outline-none"
+            >
+              <img src="/logo.png" alt="Homi logo" className="h-32 w-auto object-contain" width={120} height={36} />
+            </Link>
+          )}
           
           <button
             type="button"
@@ -91,25 +105,54 @@ export default function Header() {
                     whileHover={{ opacity: 1 }}
                     transition={{ delay: idx * 0.05 }}
                   >
-                    <a 
-                      href={`#${item.targetId}`} 
-                      onClick={(e) => handleScroll(e, item.targetId)}
-                      className="text-24 font-serif font-300 leading-none text-black hover:opacity-80 transition-opacity duration-200"
-                    >
-                      {item.title}
-                    </a>
+                    {item.href ? (
+                      <Link 
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-24 font-serif font-300 leading-none text-black hover:opacity-80 transition-opacity duration-200"
+                      >
+                        {item.title}
+                      </Link>
+                    ) : !isHomepage ? (
+                      <Link 
+                        href={`/#${item.targetId}`}
+                        onClick={() => setIsOpen(false)}
+                        className="text-24 font-serif font-300 leading-none text-black hover:opacity-80 transition-opacity duration-200"
+                      >
+                        {item.title}
+                      </Link>
+                    ) : (
+                      <a 
+                        href={`#${item.targetId}`} 
+                        onClick={(e) => handleScroll(e, item.targetId || "")}
+                        className="text-24 font-serif font-300 leading-none text-black hover:opacity-80 transition-opacity duration-200"
+                      >
+                        {item.title}
+                      </a>
+                    )}
                   </motion.li>
                 ))}
               </ul>
               
               <div className="flex flex-col gap-10">
-                <button
-                  onClick={(e) => handleScroll(e, "cta")}
-                  className="w-full text-center h-50 rounded-full text-true-white bg-black px-24 text-16 font-500 flex items-center justify-center cursor-pointer shadow-sm hover:bg-black/90 active:scale-[0.98] transition-all"
-                  title="Start Free"
-                >
-                  Start Free
-                </button>
+                {isHomepage ? (
+                  <button
+                    onClick={(e) => handleScroll(e, "cta")}
+                    className="w-full text-center h-50 rounded-full text-true-white bg-black px-24 text-16 font-500 flex items-center justify-center cursor-pointer shadow-sm hover:bg-black/90 active:scale-[0.98] transition-all"
+                    title="Start Free"
+                  >
+                    Start Free
+                  </button>
+                ) : (
+                  <Link
+                    href="/#cta"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full text-center h-50 rounded-full text-true-white bg-black px-24 text-16 font-500 flex items-center justify-center cursor-pointer shadow-sm hover:bg-black/90 active:scale-[0.98] transition-all"
+                    title="Start Free"
+                  >
+                    Start Free
+                  </Link>
+                )}
               </div>
             </motion.nav>
           )}
@@ -121,37 +164,73 @@ export default function Header() {
         <div className="bg-white/80 backdrop-blur-md border border-solid border-black/8 rounded-20 shadow-marquee-slide-title flex items-center h-52 px-16 gap-28 text-black">
           
           {/* Logo (Left) */}
-          <button 
-            onClick={(e) => handleScroll(e, "hero")}
-            className="flex items-center select-none cursor-pointer focus:outline-none"
-          >
-            <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" width={120} height={36} />
-          </button>
+          {isHomepage ? (
+            <button 
+              onClick={(e) => handleScroll(e, "hero")}
+              className="flex items-center select-none cursor-pointer focus:outline-none"
+            >
+              <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" width={120} height={36} />
+            </button>
+          ) : (
+            <Link 
+              href="/"
+              className="flex items-center select-none cursor-pointer focus:outline-none"
+            >
+              <img src="/logo.png" alt="Homi logo" className="h-32 800:h-36 w-auto object-contain" width={120} height={36} />
+            </Link>
+          )}
 
           {/* Center Navigation */}
           <ul className="flex gap-24 items-center justify-center">
             {menuItems.map((item) => (
               <li key={item.title}>
-                <a
-                  href={`#${item.targetId}`}
-                  onClick={(e) => handleScroll(e, item.targetId)}
-                  className="text-13 font-400 font-sans tracking-tight leading-none text-black/60 transition-opacity duration-200 site-ease hover:opacity-100 whitespace-nowrap"
-                  title={item.title}
-                >
-                  {item.title}
-                </a>
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className="text-13 font-400 font-sans tracking-tight leading-none text-black/60 transition-opacity duration-200 site-ease hover:opacity-100 whitespace-nowrap"
+                    title={item.title}
+                  >
+                    {item.title}
+                  </Link>
+                ) : !isHomepage ? (
+                  <Link
+                    href={`/#${item.targetId}`}
+                    className="text-13 font-400 font-sans tracking-tight leading-none text-black/60 transition-opacity duration-200 site-ease hover:opacity-100 whitespace-nowrap"
+                    title={item.title}
+                  >
+                    {item.title}
+                  </Link>
+                ) : (
+                  <a
+                    href={`#${item.targetId}`}
+                    onClick={(e) => handleScroll(e, item.targetId || "")}
+                    className="text-13 font-400 font-sans tracking-tight leading-none text-black/60 transition-opacity duration-200 site-ease hover:opacity-100 whitespace-nowrap"
+                    title={item.title}
+                  >
+                    {item.title}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
 
           {/* Divider and Right CTA (Start Free) */}
           <div className="flex items-center pl-10 border-l border-black/5">
-            <button
-              onClick={(e) => handleScroll(e, "cta")}
-              className="h-32 rounded-full bg-black hover:bg-black/85 active:scale-[0.96] text-true-white text-12 font-sans font-500 px-16 flex items-center justify-center shadow-sm select-none cursor-pointer transition-all duration-200"
-            >
-              Start Free
-            </button>
+            {isHomepage ? (
+              <button
+                onClick={(e) => handleScroll(e, "cta")}
+                className="h-32 rounded-full bg-black hover:bg-black/85 active:scale-[0.96] text-true-white text-12 font-sans font-500 px-16 flex items-center justify-center shadow-sm select-none cursor-pointer transition-all duration-200"
+              >
+                Start Free
+              </button>
+            ) : (
+              <Link
+                href="/#cta"
+                className="h-32 rounded-full bg-black hover:bg-black/85 active:scale-[0.96] text-true-white text-12 font-sans font-500 px-16 flex items-center justify-center shadow-sm select-none cursor-pointer transition-all duration-200"
+              >
+                Start Free
+              </Link>
+            )}
           </div>
 
         </div>

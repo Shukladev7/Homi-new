@@ -119,6 +119,8 @@ export const metadata: Metadata = {
   category: "Education",
 };
 
+import SessionProviderWrapper from "@/components/admin/SessionProviderWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -137,7 +139,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-full flex flex-col antialiased bg-background text-primary">
-        {children}
+        <SessionProviderWrapper>
+          {children}
+        </SessionProviderWrapper>
         <AnalyticsScripts />
       </body>
     </html>

@@ -1,7 +1,7 @@
 import InteriorHeader from "./InteriorHeader";
 import InteriorFooter from "./InteriorFooter";
 
-export default function InteriorLayout({
+export default function InternalLayout({
   children,
 }: {
   children: React.ReactNode;
