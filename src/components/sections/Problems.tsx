@@ -114,7 +114,7 @@ export default function Problems() {
   return (
     <section ref={containerRef} className="relative w-full h-auto 800:h-[400vh] bg-transparent">
       {/* Mobile Layout (< 800px) */}
-      <div className="800:hidden px-24 py-80 flex flex-col gap-60">
+      <div className="800:hidden px-24 py-40 flex flex-col gap-60">
         <div className="text-center mb-20 flex flex-col gap-10 section-header">
           <h2 className="h2--exposure text-black">Sound familiar?</h2>
           <p className="text-16 font-semibold text-secondary leading-normal">

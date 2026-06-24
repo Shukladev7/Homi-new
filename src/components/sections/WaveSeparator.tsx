@@ -79,7 +79,7 @@ export default function WaveSeparator({ type }: WaveSeparatorProps) {
           viewBox="0 0 1440 120" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-80 800:h-120"
+          className="w-full h-60 800:h-90"
           preserveAspectRatio="none"
           animate={{ y: [0, -3, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}

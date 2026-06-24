@@ -150,7 +150,7 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative py-40 800:py-60 overflow-hidden font-sans bg-gradient-to-b from-[#FFFDF9] to-[#F6F0FF] text-black"
+      className="relative py-30 800:py-45 overflow-hidden font-sans bg-gradient-to-b from-[#FFFDF9] to-[#F6F0FF] text-black"
     >
       {/* Decorative ambient gradients inspired by Dia & Apple landing pages */}
       <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-[#E6D5FF]/20 to-[#FFF0D9]/30 rounded-full blur-[120px] pointer-events-none z-0" />

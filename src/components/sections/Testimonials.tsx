@@ -77,7 +77,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-80 800:py-120 max-w-1440 mx-auto px-20 overflow-x-clip select-none">
+    <section className="py-40 800:py-60 max-w-1440 mx-auto px-20 overflow-x-clip select-none">
       <div className="w-full">
         {/* Section Header */}
         <div className="text-center mb-60 flex flex-col gap-12 items-center section-header">

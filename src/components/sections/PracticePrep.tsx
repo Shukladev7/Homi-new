@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function PracticePrep() {
   return (
-    <section id="features" className="py-80 800:py-120 max-w-1600 mx-auto px-20">
+    <section id="features" className="py-40 800:py-60 max-w-1600 mx-auto px-20">
       <div className="w-full">
         {/* Section Header */}
         <div className="text-center mb-60 flex flex-col gap-12 items-center section-header">

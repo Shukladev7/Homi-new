@@ -321,7 +321,7 @@ export default function Teachers() {
   };
 
   return (
-    <section id="for-teachers" className="py-60 800:py-90 max-w-1440 mx-auto px-20 relative overflow-hidden bg-transparent">
+    <section id="for-teachers" className="py-40 800:py-60 max-w-1440 mx-auto px-20 relative overflow-hidden bg-transparent">
       
       {/* Background Soft Glows */}
       <div className="absolute top-[20%] left-[-10%] w-[350px] h-[350px] bg-purple-500/5 rounded-full blur-[80px] pointer-events-none -z-10" />

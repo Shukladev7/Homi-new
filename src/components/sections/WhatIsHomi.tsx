@@ -192,7 +192,7 @@ export default function WhatIsHomi() {
   const activeCard = cards.find(c => c.id === activeTab) || cards[0];
 
   return (
-    <section className="py-80 800:py-120 max-w-1440 mx-auto px-20 site-grid">
+    <section className="py-40 800:py-60 max-w-1440 mx-auto px-20 site-grid">
       <div className="col-span-12 grid grid-cols-12 gap-y-40 800:gap-x-80 items-center w-full">
         
         {/* Left Side: Copy and Title (5 columns) */}

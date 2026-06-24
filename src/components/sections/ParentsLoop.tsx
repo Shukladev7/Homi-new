@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ParentsLoop() {
   return (
-    <section id="for-parents" className="py-80 800:py-120 max-w-1440 mx-auto px-20 overflow-hidden">
+    <section id="for-parents" className="py-40 800:py-60 max-w-1440 mx-auto px-20 overflow-hidden">
       <div className="w-full flex flex-col 800:grid 800:grid-cols-12 gap-y-40 800:gap-x-80 items-center">
         
         {/* Left Side: Headline and Supporting Copy (5 columns) */}

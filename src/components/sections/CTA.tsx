@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CTA() {
   return (
-    <section id="cta" className="pt-100 pb-80 800:py-100 800:pt-150 max-w-760 mx-auto flex flex-col justify-center items-center px-20 800:px-0 section-header">
+    <section id="cta" className="pt-50 pb-40 800:py-60 max-w-760 mx-auto flex flex-col justify-center items-center px-20 800:px-0 section-header">
       
       {/* Brand Anchor Logo1 */}
       <motion.div 
